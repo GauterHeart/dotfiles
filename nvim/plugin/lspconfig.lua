@@ -80,8 +80,15 @@ nvim_lsp.pylsp.setup({
 	settings = {
 		pylsp = {
 			plugins = {
-				pycodestyle = {enabled = false},
-				mypy = {enabled = true},
+				jedi_completion = {enabled = false},
+				jedi_hover = {enabled = false},
+				jedi_references = {enabled = false},
+				jedi_signature_help = {enabled = false},
+				jedi_symbols = {enabled = false, all_scopes = false},
+				pycodestyle = { enabled = false },
+				pyflakes = {enabled = false},
+				flake8 = {enabled = true},
+				mypy = { enabled = true },
 			},
 		},
 	},
