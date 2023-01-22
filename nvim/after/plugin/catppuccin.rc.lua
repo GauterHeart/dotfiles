@@ -1,6 +1,6 @@
 vim.g.catppuccin_flavour = "mocha"
 require("catppuccin").setup({
-	transparent_background = false,
+	transparent_background = true,
 	term_colors = false,
 	compile = {
 		enabled = true,
@@ -39,11 +39,11 @@ require("catppuccin").setup({
 		},
 		cmp = true,
 		hop = true,
-		-- lsp_saga = true,
+		lsp_saga = true,
 		telescope = true,
 		harpoon = true,
 		noice = true,
-		neotree = { enabled = false, show_root = true, transparent_panel = false },
+		neotree = { enabled = true, show_root = false, transparent_panel = false },
 	},
 })
 -- vim.cmd([[colorscheme catppuccin]])

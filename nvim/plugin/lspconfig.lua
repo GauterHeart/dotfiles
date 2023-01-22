@@ -71,24 +71,21 @@ nvim_lsp.pyright.setup({
 	},
 })
 
---nvim_lsp.pylsp.setup({
---	on_attach = on_attach,
---	-- 	capabilities = capabilities,
---	filetypes = { "python" },
---	single_file_support = true,
---	cmd = { "pylsp" },
---	settings = {
---		pylsp = {
---			plugins = {
---				pycodestyle = {
---					ignore = { "W391" },
---					maxLineLength = 100,
---				},
---				mypy = {}
---			},
---		},
---	},
--- })
+nvim_lsp.pylsp.setup({
+	on_attach = on_attach,
+	-- 	capabilities = capabilities,
+	filetypes = { "python" },
+	single_file_support = true,
+	cmd = { "pylsp" },
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {enabled = false},
+				mypy = {enabled = true},
+			},
+		},
+	},
+})
 
 nvim_lsp.tsserver.setup({
 	on_attach = on_attach,
@@ -155,6 +152,12 @@ nvim_lsp.sumneko_lua.setup({
 --			},
 --		},
 --	},
+-- })
+
+-- nvim_lsp.sqls.setup({
+-- 	on_attach = function(client, bufnr)
+-- 		require("sqls").on_attach(client, bufnr)
+-- 	end,
 -- })
 
 -- Utils LSP

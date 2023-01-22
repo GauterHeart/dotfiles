@@ -18,6 +18,7 @@ return require("packer").startup(function(use)
 	use("glepnir/lspsaga.nvim") -- UI
 	use("L3MON4D3/LuaSnip") -- Snippet Engine
 	use("ray-x/lsp_signature.nvim")
+	-- use("nanotee/sqls.nvim")
 	-- use("mfussenegger/nvim-lint")
 
 	-- Lsp installer
@@ -57,7 +58,7 @@ return require("packer").startup(function(use)
 	-- Nvim
 	use("nvim-lualine/lualine.nvim")
 	use("phaazon/hop.nvim")
-	use("Pocco81/true-zen.nvim")
+	use("folke/zen-mode.nvim")
 	use("lewis6991/impatient.nvim") -- cashe nvim
 	use("folke/which-key.nvim")
 	use("ThePrimeagen/harpoon")
@@ -67,4 +68,5 @@ return require("packer").startup(function(use)
 
 	-- Theme
 	use({ "catppuccin/nvim", as = "catppuccin" })
+
 end)

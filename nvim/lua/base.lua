@@ -42,7 +42,7 @@ vim.opt.breakindent = true
 
 -- UI
 -- vim.opt.guifont = { "Hack Nerd Font Mono", "h12" }
-vim.opt.guifont = { "FiraCode Nerd Font Mono", "h12" }
+vim.opt.guifont = { "FiraCode Nerd Font Mono", ":h16" }
 vim.g.neovide_cursor_vfx_mode = "sonicboom"
 vim.g.neovide_input_use_logo = 1
 vim.g.neovide_hide_mouse_when_typing = 1

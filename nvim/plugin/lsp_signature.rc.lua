@@ -4,7 +4,7 @@ if not status then
 end
 
 signature.setup({
-	log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
+	-- log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
 	--
 	-- RABBIT_PUBLISHER_DSN: str
 	doc_lines = 0, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
