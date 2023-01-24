@@ -15,12 +15,9 @@ return require("packer").startup(function(use)
 	use("neovim/nvim-lspconfig") -- Lsp Engine
 	use("onsails/lspkind-nvim") -- vscode-like pictograms
 	use("jose-elias-alvarez/null-ls.nvim") -- Linter, Diagnostic ...
-	use("glepnir/lspsaga.nvim") -- UI
 	use("L3MON4D3/LuaSnip") -- Snippet Engine
 	use("ray-x/lsp_signature.nvim")
 	use("folke/trouble.nvim")
-	-- use("nanotee/sqls.nvim")
-	-- use("mfussenegger/nvim-lint")
 
 	-- Lsp installer
 	use("williamboman/mason.nvim")

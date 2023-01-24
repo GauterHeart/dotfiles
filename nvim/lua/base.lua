@@ -45,6 +45,7 @@ vim.opt.breakindent = true
 vim.opt.guifont = { "FiraCode Nerd Font Mono", ":h16" }
 vim.g.neovide_cursor_vfx_mode = "sonicboom"
 vim.g.neovide_input_use_logo = 1
+-- vim.g.neovide_transparency = 0.9
 vim.g.neovide_hide_mouse_when_typing = 1
 vim.g.neovide_underline_automatic_scaling = 1
 vim.g.neovide_refresh_rate = 120

@@ -40,6 +40,12 @@ telescope.setup({
 		diagnostics = {
 			theme = "dropdown",
 		},
+		lsp_references = {
+			theme = "dropdown",
+		},
+		treesitter = {
+			theme = "dropdown",
+		},
 	},
 	extensions = {},
 })
@@ -59,18 +65,18 @@ vim.keymap.set("n", "\\\\", function()
 	builtin.buffers()
 end)
 
-vim.keymap.set("n", ";t", function()
-	builtin.help_tags()
+vim.keymap.set("n", ";E", function()
+	builtin.diagnostics()
 end)
 
--- vim.keymap.set("n", "/", function()
--- 	builtin.current_buffer_fuzzy_find()
--- end)
-
--- vim.keymap.set("n", ";;", function()
---	builtin.resume()
--- end)
-
 vim.keymap.set("n", ";e", function()
-	builtin.diagnostics()
+	builtin.diagnostics({bufnr=0})
+end)
+
+vim.keymap.set("n", ";t", function()
+	builtin.treesitter()
+end)
+
+vim.keymap.set("n", ";d", function()
+	builtin.lsp_references()
 end)

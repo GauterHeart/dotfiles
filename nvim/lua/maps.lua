@@ -11,8 +11,6 @@ keymap.set("n", "cc", '"_cc')
 keymap.set("n", "ce", '"_ce')
 keymap.set("n", "cb", '"_cb')
 
--- New tab
-keymap.set("n", "te", ":tabedit")
 -- Split window
 -- keymap.set("n", "ss", ":split<Return><C-w>w")
 -- keymap.set("n", "sv", ":vsplit<Return><C-w>w")
@@ -22,6 +20,13 @@ keymap.set("", "sh", "<C-w>h")
 keymap.set("", "sk", "<C-w>k")
 keymap.set("", "sj", "<C-w>j")
 keymap.set("", "sl", "<C-w>l")
+
+
+-- Tab
+keymap.set("n", "tt", ":tabnew<CR>")
+keymap.set("n", "tn", ":tabnext<CR>")
+keymap.set("n", "tb", ":tabprev<CR>")
+
 
 -- neovide
 vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })

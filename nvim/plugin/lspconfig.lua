@@ -6,27 +6,22 @@ if not status then
 end
 
 local util = require("lspconfig/util")
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "cd", vim.diagnostic.open_float, opts)
 
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-
-	--Enable completion triggered by <c-x><c-o>
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-	-- Mappings.
-	local opts = { noremap = true, silent = true }
-
-	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
 end
 
--- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- vim.lsp.handlers["textDocument/documentSymbol"] = require'lsputil.symbols'.document_handler
 
 -- Diagnostic
 local signs = {
@@ -80,14 +75,14 @@ nvim_lsp.pylsp.setup({
 	settings = {
 		pylsp = {
 			plugins = {
-				jedi_completion = {enabled = false},
-				jedi_hover = {enabled = false},
-				jedi_references = {enabled = false},
-				jedi_signature_help = {enabled = false},
-				jedi_symbols = {enabled = false, all_scopes = false},
+				jedi_completion = { enabled = false },
+				jedi_hover = { enabled = false },
+				jedi_references = { enabled = false },
+				jedi_signature_help = { enabled = false },
+				jedi_symbols = { enabled = false, all_scopes = false },
 				pycodestyle = { enabled = false },
-				pyflakes = {enabled = false},
-				flake8 = {enabled = true},
+				pyflakes = { enabled = false },
+				flake8 = { enabled = true },
 				mypy = { enabled = true },
 			},
 		},
@@ -130,42 +125,6 @@ nvim_lsp.sumneko_lua.setup({
 		},
 	},
 })
-
--- nvim_lsp.efm.setup({
---    filetypes = { "python" },
---   on_attach = on_attach,
---    init_options = {documentFormatting = true},
---    settings = {
---        rootMarkers = {".git/"},
---    }
--- })
-
--- nvim_lsp.diagnosticls.setup({
---	cmd = { "diagnostic-languageserver", "--stdio" },
---	single_file_support = true,
---	settings = {
---		languageserver = {
---			dls = {
---				linters = {
---					mypy = {
---						sourceName = "mypy",
---						command = "mypy",
---						args = { "--no-color-output" },
---						securities = {
---							error = "error",
---						},
---					},
---				},
---			},
---		},
---	},
--- })
-
--- nvim_lsp.sqls.setup({
--- 	on_attach = function(client, bufnr)
--- 		require("sqls").on_attach(client, bufnr)
--- 	end,
--- })
 
 -- Utils LSP
 nvim_lsp.bashls.setup({})

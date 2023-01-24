@@ -43,6 +43,7 @@ require("catppuccin").setup({
 		telescope = true,
 		harpoon = true,
 		noice = true,
+		notify = true,
 		neotree = { enabled = true, show_root = false, transparent_panel = false },
 	},
 })

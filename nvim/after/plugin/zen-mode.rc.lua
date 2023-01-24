@@ -6,8 +6,8 @@ end
 zen.setup({
 	window = {
 		backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-		width = .75,
-		height = .80, -- height of the Zen window
+		width = 0.75,
+		height = 0.80, -- height of the Zen window
 	},
 	plugins = {
 		-- disable some global vim options (vim.o...)
