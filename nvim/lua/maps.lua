@@ -21,12 +21,10 @@ keymap.set("", "sk", "<C-w>k")
 keymap.set("", "sj", "<C-w>j")
 keymap.set("", "sl", "<C-w>l")
 
-
 -- Tab
 keymap.set("n", "tt", ":tabnew<CR>")
 keymap.set("n", "tn", ":tabnext<CR>")
 keymap.set("n", "tb", ":tabprev<CR>")
-
 
 -- neovide
 vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })

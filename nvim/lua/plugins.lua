@@ -25,8 +25,10 @@ return require("packer").startup(function(use)
 
 	-- Completion
 	use("hrsh7th/nvim-cmp") -- Capabilities Engine
+	use("lukas-reineke/cmp-under-comparator")
 	use("hrsh7th/cmp-buffer") -- nvim-cmp source for buffer words
 	use("hrsh7th/cmp-nvim-lsp") -- nvim-cmp source for neovim's built-in LSP
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
 
 	-- Fzf
 	use("nvim-telescope/telescope.nvim")
@@ -66,5 +68,4 @@ return require("packer").startup(function(use)
 
 	-- Theme
 	use({ "catppuccin/nvim", as = "catppuccin" })
-
 end)
