@@ -70,7 +70,7 @@ vim.keymap.set("n", ";E", function()
 end)
 
 vim.keymap.set("n", ";e", function()
-	builtin.diagnostics({bufnr=0})
+	builtin.diagnostics({ bufnr = 0 })
 end)
 
 vim.keymap.set("n", ";t", function()

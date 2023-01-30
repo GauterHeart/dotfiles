@@ -129,3 +129,9 @@ nvim_lsp.sumneko_lua.setup({
 -- Utils LSP
 nvim_lsp.bashls.setup({})
 nvim_lsp.jsonls.setup({})
+-- nvim_lsp.sqlls.setup({
+-- 	on_attach = on_attach,
+-- 	cmd = { "sql-language-server", "up", "--method", "stdio" },
+-- 	filetypes = { "sql" },
+-- 	-- root_dir = '.'
+-- })
