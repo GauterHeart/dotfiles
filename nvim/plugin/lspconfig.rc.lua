@@ -75,6 +75,7 @@ nvim_lsp.pylsp.setup({
 	settings = {
 		pylsp = {
 			plugins = {
+				-- jedi_environment = "venv",
 				jedi_completion = { enabled = false },
 				jedi_hover = { enabled = false },
 				jedi_references = { enabled = false },
@@ -109,22 +110,22 @@ nvim_lsp.gopls.setup({
 	},
 })
 
-nvim_lsp.sumneko_lua.setup({
-	on_attach = on_attach,
-	settings = {
-		Lua = {
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
-				checkThirdParty = false,
-			},
-		},
-	},
-})
+-- nvim_lsp.sumneko_lua.setup({
+-- 	on_attach = on_attach,
+-- 	settings = {
+-- 		Lua = {
+-- 			diagnostics = {
+-- 				-- Get the language server to recognize the `vim` global
+-- 				globals = { "vim" },
+-- 			},
+--
+-- 			workspace = {
+-- 				library = vim.api.nvim_get_runtime_file("", true),
+-- 				checkThirdParty = false,
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 -- Utils LSP
 nvim_lsp.bashls.setup({})

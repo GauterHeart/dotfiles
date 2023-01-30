@@ -1,71 +1,85 @@
-local status, packer = pcall(require, "packer")
+local status, lazy = pcall(require, "lazy")
 if not status then
-	print("Packer is not installed")
+	print("Lazy is not installed")
 	return
 end
 
-vim.cmd([[packadd packer.nvim]])
-
-return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-	use("MunifTanjim/nui.nvim")
-	use("nvim-lua/plenary.nvim")
+lazy.setup({
+	defaults = {
+		lazy = true, -- should plugins be lazy-loaded?
+	},
+	performance = {
+		cache = {
+			enabled = true,
+			path = vim.fn.stdpath("cache") .. "/lazy/cache",
+			disable_events = { "UIEnter", "BufReadPre" },
+			ttl = 3600 * 24 * 5, -- keep unused modules for up to 5 days
+		},
+		reset_packpath = true, -- reset the package path to improve startup time
+		rtp = {
+			reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+			---@type string[]
+			paths = {}, -- add any custom paths here that you want to includes in the rtp
+			---@type string[] list any plugins you want to disable here
+			disabled_plugins = {},
+		},
+	},
+	-- Depends
+	"MunifTanjim/nui.nvim",
+	"nvim-lua/plenary.nvim",
 
 	-- Lsp
-	use("neovim/nvim-lspconfig") -- Lsp Engine
-	use("onsails/lspkind-nvim") -- vscode-like pictograms
-	use("jose-elias-alvarez/null-ls.nvim") -- Linter, Diagnostic ...
-	use("L3MON4D3/LuaSnip") -- Snippet Engine
-	use("ray-x/lsp_signature.nvim")
-	use("folke/trouble.nvim")
+	"neovim/nvim-lspconfig", -- Lsp Engine
+	"onsails/lspkind-nvim", -- vscode-like pictograms
+	"jose-elias-alvarez/null-ls.nvim", -- Linter, Diagnostic ...
+	"L3MON4D3/LuaSnip", -- Snippet Engine
+	"ray-x/lsp_signature.nvim",
+	"folke/trouble.nvim",
 
 	-- Lsp installer
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
 
 	-- Completion
-	use("hrsh7th/nvim-cmp") -- Capabilities Engine
-	use("lukas-reineke/cmp-under-comparator")
-	use("hrsh7th/cmp-buffer") -- nvim-cmp source for buffer words
-	use("hrsh7th/cmp-nvim-lsp") -- nvim-cmp source for neovim's built-in LSP
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
+	"hrsh7th/nvim-cmp", -- Capabilities Engine
+	"lukas-reineke/cmp-under-comparator",
+	"hrsh7th/cmp-buffer", -- nvim-cmp source for buffer words
+	"hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim's built-in LSP
+	"hrsh7th/cmp-nvim-lsp-signature-help",
 
 	-- Fzf
-	use("nvim-telescope/telescope.nvim")
+	"nvim-telescope/telescope.nvim",
 
 	-- Terminal
-	use("numToStr/FTerm.nvim")
+	"numToStr/FTerm.nvim",
 
 	-- Git
-	use("kdheepak/lazygit.nvim")
-	use({
-		"lewis6991/gitsigns.nvim",
-	})
+	"kdheepak/lazygit.nvim",
+	"lewis6991/gitsigns.nvim",
 
 	-- File explorer
-	use("nvim-neo-tree/neo-tree.nvim")
+	"nvim-neo-tree/neo-tree.nvim",
 
 	-- Code
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
-	use("danymat/neogen")
-	use("windwp/nvim-autopairs")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("numToStr/Comment.nvim")
+		cmd = "TSUpdate",
+	},
+	"danymat/neogen",
+	"windwp/nvim-autopairs",
+	"lukas-reineke/indent-blankline.nvim",
+	"numToStr/Comment.nvim",
 
 	-- Nvim
-	use("nvim-lualine/lualine.nvim")
-	use("phaazon/hop.nvim")
-	use("folke/zen-mode.nvim")
-	use("lewis6991/impatient.nvim") -- cashe nvim
-	use("folke/which-key.nvim")
-	use("ThePrimeagen/harpoon")
+	"nvim-lualine/lualine.nvim",
+	"phaazon/hop.nvim",
+	"folke/zen-mode.nvim",
+	"folke/which-key.nvim",
+	"ThePrimeagen/harpoon",
 
 	-- Icons
-	use("kyazdani42/nvim-web-devicons")
+	"kyazdani42/nvim-web-devicons",
 
 	-- Theme
-	use({ "catppuccin/nvim", as = "catppuccin" })
-end)
+	{ "catppuccin/nvim", ft = "catppuccin" },
+})

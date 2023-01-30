@@ -1,5 +1,10 @@
+local status, catppuccin = pcall(require, "catppuccin")
+if not status then
+	return
+end
+
 vim.g.catppuccin_flavour = "mocha"
-require("catppuccin").setup({
+catppuccin.setup({
 	transparent_background = true,
 	term_colors = false,
 	compile = {

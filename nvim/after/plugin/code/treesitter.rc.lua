@@ -6,12 +6,13 @@ end
 ts.setup({
 	highlight = {
 		enable = true,
+		-- additional_vim_regex_highlighting = true,
 		use_languagetree = true,
 		disable = {},
 	},
 	indent = {
 		enable = true,
-		disable = { "python", "yaml" },
+		-- disable = { "python", "yaml" },
 	},
 	ensure_installed = {
 		"tsx",
@@ -31,4 +32,7 @@ ts.setup({
 	autotag = {
 		enable = true,
 	},
+	-- context_commentstring = {
+	-- 	enable = true,
+	-- },
 })
