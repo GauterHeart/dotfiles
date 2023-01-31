@@ -6,6 +6,7 @@
 brew install neovim;
 brew install rg;  # ripgrep
 brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font; # Nerd Font
+brew install lazygit; # Git UI
 ```
 
 ### LSP
