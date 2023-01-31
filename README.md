@@ -1,5 +1,3 @@
-# dotfiles
-
 # Neovim
 
 ### Depends
