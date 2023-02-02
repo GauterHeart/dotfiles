@@ -2,10 +2,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="arrow"
 
-# ????
-# export NVM_LAZY_LOAD=true
-# export NVM_COMPLETION=true
-
 plugins=(git zsh-syntax-highlighting macos tmux z vi-mode)
 
 source $ZSH/oh-my-zsh.sh
@@ -46,7 +42,6 @@ if ! (( $+commands[exa] )); then
   return 1
 fi
 
-# general use aliases 
 alias ls='exa' # just replace ls by exa and allow all other exa arguments
 alias l='ls -lbF' #   list, size, type
 alias ll='ls -la' # long, all
@@ -55,3 +50,6 @@ alias la='ls -lbhHigUmuSa' # all list
 alias lx='ls -lbhHigUmuSa@' # all list and extended
 alias tree='exa --tree' # tree view
 alias lS='exa -1' # one column by just names
+
+# Cat
+alias cat='bat'
