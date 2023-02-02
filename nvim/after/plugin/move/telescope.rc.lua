@@ -6,6 +6,7 @@ local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 
 telescope.load_extension("harpoon")
+local picker_style = {theme = "dropdown"}
 
 telescope.setup({
 	defaults = {
@@ -25,27 +26,15 @@ telescope.setup({
 		},
 	},
 	pickers = {
-		find_files = {
-			theme = "dropdown",
-		},
-		live_grep = {
-			theme = "dropdown",
-		},
-		buffers = {
-			theme = "dropdown",
-		},
-		current_buffer_fuzzy_find = {
-			theme = "dropdown",
-		},
-		diagnostics = {
-			theme = "dropdown",
-		},
-		lsp_references = {
-			theme = "dropdown",
-		},
-		treesitter = {
-			theme = "dropdown",
-		},
+		find_files = picker_style,
+		live_grep = picker_style,
+		buffers = picker_style,
+		current_buffer_fuzzy_find = picker_style,
+		diagnostics = picker_style,
+		lsp_references = picker_style,
+		treesitter = picker_style,
+		git_branches = picker_style,
+		git_commits = picker_style,
 	},
 	extensions = {},
 })
@@ -79,4 +68,12 @@ end)
 
 vim.keymap.set("n", ";d", function()
 	builtin.lsp_references()
+end)
+
+vim.keymap.set("n", ";gb", function()
+	builtin.git_branches()
+end)
+
+vim.keymap.set("n", ";gc", function()
+	builtin.git_commits()
 end)

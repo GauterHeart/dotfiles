@@ -56,6 +56,7 @@ lazy.setup({
 	-- Git
 	"kdheepak/lazygit.nvim",
 	"lewis6991/gitsigns.nvim",
+	"tpope/vim-fugitive",
 
 	-- File explorer
 	"nvim-neo-tree/neo-tree.nvim",
@@ -81,5 +82,5 @@ lazy.setup({
 	"kyazdani42/nvim-web-devicons",
 
 	-- Theme
-	{ "catppuccin/nvim", ft = "catppuccin" },
+	{ "catppuccin/nvim", name = "catppuccin" },
 })

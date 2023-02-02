@@ -10,9 +10,10 @@ wk.register({
 	["<Leader>ds"] = { "<cmd>Neogen<cr>", "Neogen" },
 	[";;"] = { "<cmd>Telescope harpoon marks theme=dropdown<cr>", "HarpoonFinder" },
 	["<Leader>af"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "HarpoonAddFile" },
-	["<Leader>nb"] = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "HarpoonMoveNext" },
-	["<Leader>pb"] = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "HarpoonMovePrev" },
+	-- ["<Leader>nb"] = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "HarpoonMoveNext" },
+	-- ["<Leader>pb"] = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "HarpoonMovePrev" },
 	["<F7>"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "HarpoonUI" },
+	["<Leader>cb"] = {":Git checkout -b<Space>", "Git create branch"}
 })
 
 wk.setup({

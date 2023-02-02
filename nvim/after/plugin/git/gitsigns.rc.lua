@@ -37,3 +37,5 @@ git.setup({
 		enable = false,
 	},
 })
+
+vim.keymap.set("n", "cn", ':Gitsigns blame_line<CR>')

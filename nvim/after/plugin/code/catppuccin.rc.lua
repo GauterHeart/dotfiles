@@ -44,11 +44,9 @@ catppuccin.setup({
 		},
 		cmp = true,
 		hop = true,
-		lsp_saga = true,
 		telescope = true,
 		harpoon = true,
-		noice = true,
-		notify = true,
+		fidget = true,
 		neotree = { enabled = true, show_root = false, transparent_panel = false },
 	},
 })
