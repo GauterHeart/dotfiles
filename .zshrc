@@ -1,6 +1,10 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="arrow"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-syntax-highlighting macos tmux z vi-mode)
 
@@ -11,14 +15,10 @@ export PATH=~/go/bin:$PATH
 export PATH=~/.local/bin:$PATH
 
 # Starship
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
 # Zoxide
 eval "$(zoxide init zsh)"
-
-# Fuck
-eval $(thefuck --alias)
-alias f='fuck' #   list, size, type
 
 # Brew Configuration
 export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
@@ -30,7 +30,8 @@ alias ldoc='lazydocker' #   list, size, type
 
 
 # Neovide 
-alias neo='neovide --noidle --multigrid --frame buttonless --geometry=100x100'
+# alias neo='neovide --noidle --multigrid --frame buttonless --geometry=100x100'
+alias neo='neovide --frame buttonless --geometry=100x100'
 
 # Kitty
 alias icat="kitty +kitten icat"
@@ -42,6 +43,7 @@ if ! (( $+commands[exa] )); then
   return 1
 fi
 
+# general use aliases 
 alias ls='exa' # just replace ls by exa and allow all other exa arguments
 alias l='ls -lbF' #   list, size, type
 alias ll='ls -la' # long, all
@@ -53,3 +55,11 @@ alias lS='exa -1' # one column by just names
 
 # Cat
 alias cat='bat'
+
+
+# Python
+alias migrate="migrate.sh"
+alias py_run="py_run.sh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
