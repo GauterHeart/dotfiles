@@ -13,7 +13,8 @@ wk.register({
 	-- ["<Leader>nb"] = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "HarpoonMoveNext" },
 	-- ["<Leader>pb"] = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "HarpoonMovePrev" },
 	["<F7>"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "HarpoonUI" },
-	["<Leader>cb"] = {":Git checkout -b<Space>", "Git create branch"}
+	["<Leader>cb"] = { ":Git checkout -b<Space>", "Git create branch" },
+	-- ["<F8>"] = { "<cmd>RnvimrToggle<cr>", "HarpoonUI" },
 })
 
 wk.setup({

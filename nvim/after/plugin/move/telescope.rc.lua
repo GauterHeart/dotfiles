@@ -4,9 +4,12 @@ if not status then
 end
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
+local function telescope_buffer_dir()
+	return vim.fn.expand("%:p:h")
+end
 
 telescope.load_extension("harpoon")
-local picker_style = {theme = "dropdown"}
+local picker_style = { theme = "dropdown" }
 
 telescope.setup({
 	defaults = {
@@ -18,6 +21,9 @@ telescope.setup({
 			"client/.*",
 			"data/.*",
 			"dist/.*",
+			"%.png",
+			"__init__.py",
+			"%.gif",
 		},
 		mappings = {
 			i = {
@@ -26,7 +32,7 @@ telescope.setup({
 		},
 	},
 	pickers = {
-		find_files = picker_style,
+		find_files = { theme = "dropdown", mappings = {} },
 		live_grep = picker_style,
 		buffers = picker_style,
 		current_buffer_fuzzy_find = picker_style,
@@ -36,8 +42,32 @@ telescope.setup({
 		git_branches = picker_style,
 		git_commits = picker_style,
 	},
-	extensions = {},
+	extensions = {
+		fzy_native = {
+			override_generic_sorter = false,
+			override_file_sorter = true,
+		},
+		file_browser = {
+			theme = "ivy",
+			hijack_netrw = false,
+			mappings = {
+				i = {
+					["<C-k>"] = function(prompt_bufnr)
+						local selection = require("telescope.actions.state").get_selected_entry()
+						local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+						require("telescope.actions").close(prompt_bufnr)
+						-- Depending on what you want put `cd`, `lcd`, `tcd`
+						vim.cmd(string.format("silent lcd %s", dir))
+					end,
+				},
+				["n"] = {},
+			},
+		},
+	},
 })
+
+telescope.load_extension("fzy_native")
+telescope.load_extension("file_browser")
 
 vim.keymap.set("n", ";f", function()
 	builtin.find_files({
@@ -76,4 +106,21 @@ end)
 
 vim.keymap.set("n", ";gc", function()
 	builtin.git_commits()
+end)
+
+vim.keymap.set("n", ";b", function()
+	builtin.file_browser()
+end)
+
+vim.keymap.set("n", "sf", function()
+	telescope.extensions.file_browser.file_browser({
+		path = "%:p:h",
+		cwd = telescope_buffer_dir(),
+		respect_gitignore = true,
+		hidden = true,
+		grouped = true,
+		-- previewer = true,
+		initial_mode = "insert",
+		layout_config = { height = 40 },
+	})
 end)
