@@ -61,6 +61,8 @@ nvim_lsp.pyright.setup({
 				diagnosticMode = "workspace",
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "off",
+reportUnusedVariable='warning'
+
 			},
 		},
 	},
@@ -110,22 +112,29 @@ nvim_lsp.gopls.setup({
 	},
 })
 
--- nvim_lsp.sumneko_lua.setup({
--- 	on_attach = on_attach,
--- 	settings = {
--- 		Lua = {
--- 			diagnostics = {
--- 				-- Get the language server to recognize the `vim` global
--- 				globals = { "vim" },
--- 			},
---
--- 			workspace = {
--- 				library = vim.api.nvim_get_runtime_file("", true),
--- 				checkThirdParty = false,
--- 			},
--- 		},
--- 	},
--- })
+nvim_lsp.dockerls.setup({
+	cmd = { "docker-langserver", "--stdio" },
+	filetypes = { "dockerfile" },
+	root_dir = util.root_pattern("Dockerfile"),
+	single_file_support = true
+})
+
+nvim_lsp.sumneko_lua.setup({
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+		},
+	},
+})
 
 -- Utils LSP
 nvim_lsp.bashls.setup({})

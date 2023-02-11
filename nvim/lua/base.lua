@@ -25,11 +25,13 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.showcmd = false
 vim.opt.cursorline = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
 -- vim.opt.cursorcolumn = true
 
 -- Tab
 vim.opt.smarttab = true
-vim.opt.scrolloff = 1000
+-- vim.opt.scrolloff = 1000
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
