@@ -108,10 +108,6 @@ vim.keymap.set("n", ";gc", function()
 	builtin.git_commits()
 end)
 
-vim.keymap.set("n", ";b", function()
-	builtin.file_browser()
-end)
-
 vim.keymap.set("n", "sf", function()
 	telescope.extensions.file_browser.file_browser({
 		path = "%:p:h",
@@ -124,3 +120,5 @@ vim.keymap.set("n", "sf", function()
 		layout_config = { height = 40 },
 	})
 end)
+
+vim.keymap.set("n", ";;", "<cmd>Telescope harpoon marks theme=dropdown<cr>")

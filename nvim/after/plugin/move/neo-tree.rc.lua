@@ -165,4 +165,4 @@ tree.setup({
 	},
 })
 
--- vim.cmd("nnoremap <F6> :NeoTreeFloat<CR>")
+vim.keymap.set("n", "<F6>", "<cmd>NeoTreeFloat<cr>")

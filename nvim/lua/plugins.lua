@@ -78,7 +78,6 @@ lazy.setup({
 	"nvim-lualine/lualine.nvim",
 	"phaazon/hop.nvim",
 	"folke/zen-mode.nvim",
-	"folke/which-key.nvim",
 	"ThePrimeagen/harpoon",
 
 	-- Icons
@@ -86,5 +85,4 @@ lazy.setup({
 
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin" },
-	"rebelot/kanagawa.nvim",
 })

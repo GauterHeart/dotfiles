@@ -22,3 +22,10 @@ harpoon.setup({
 	-- set marks specific to each git branch inside git repository
 	mark_branch = false,
 })
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<F7>",
+	"<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
+	{ noremap = true, silent = true }
+)

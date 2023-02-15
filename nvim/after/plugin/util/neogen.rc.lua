@@ -14,3 +14,5 @@ neogen.setup({
 		},
 	},
 })
+
+vim.keymap.set("n", "<Leader>ds", "<cmd>Neogen<cr>")

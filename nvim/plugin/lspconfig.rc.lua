@@ -61,8 +61,7 @@ nvim_lsp.pyright.setup({
 				diagnosticMode = "workspace",
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "off",
-reportUnusedVariable='warning'
-
+				reportUnusedVariable = "warning",
 			},
 		},
 	},
@@ -116,7 +115,7 @@ nvim_lsp.dockerls.setup({
 	cmd = { "docker-langserver", "--stdio" },
 	filetypes = { "dockerfile" },
 	root_dir = util.root_pattern("Dockerfile"),
-	single_file_support = true
+	single_file_support = true,
 })
 
 nvim_lsp.sumneko_lua.setup({
