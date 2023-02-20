@@ -29,3 +29,10 @@ vim.api.nvim_set_keymap(
 	"<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
 	{ noremap = true, silent = true }
 )
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>af",
+	"<cmd>lua require('harpoon.mark').add_file()<cr>",
+	{ noremap = true, silent = true }
+)

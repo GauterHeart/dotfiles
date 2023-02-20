@@ -115,7 +115,7 @@ vim.keymap.set("n", "sf", function()
 		respect_gitignore = true,
 		hidden = true,
 		grouped = true,
-		-- previewer = true,
+		previewer = false,
 		initial_mode = "insert",
 		layout_config = { height = 40 },
 	})

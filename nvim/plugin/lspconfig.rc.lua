@@ -15,13 +15,15 @@ local on_attach = function(client, bufnr)
 
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<leader>cf", function()
+		vim.lsp.buf.format({ async = true })
+	end, bufopts)
 end
-
--- vim.lsp.handlers["textDocument/documentSymbol"] = require'lsputil.symbols'.document_handler
 
 -- Diagnostic
 local signs = {
@@ -43,9 +45,6 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 vim.o.updatetime = 0
-
--- Command for float window
---vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 -- The main servers
 nvim_lsp.pyright.setup({
@@ -111,19 +110,10 @@ nvim_lsp.gopls.setup({
 	},
 })
 
-nvim_lsp.dockerls.setup({
-	cmd = { "docker-langserver", "--stdio" },
-	filetypes = { "dockerfile" },
-	root_dir = util.root_pattern("Dockerfile"),
-	single_file_support = true,
-})
-
-nvim_lsp.sumneko_lua.setup({
-	on_attach = on_attach,
+nvim_lsp.lua_ls.setup({
 	settings = {
 		Lua = {
 			diagnostics = {
-				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
 			},
 
@@ -138,9 +128,3 @@ nvim_lsp.sumneko_lua.setup({
 -- Utils LSP
 nvim_lsp.bashls.setup({})
 nvim_lsp.jsonls.setup({})
--- nvim_lsp.sqlls.setup({
--- 	on_attach = on_attach,
--- 	cmd = { "sql-language-server", "up", "--method", "stdio" },
--- 	filetypes = { "sql" },
--- 	-- root_dir = '.'
--- })
