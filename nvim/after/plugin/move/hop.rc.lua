@@ -3,6 +3,12 @@ if not status then
 	return
 end
 
-hop.setup({
-	vim.api.nvim_set_keymap("n", "f", "<cmd> lua require'hop'.hint_words()<cr>", {}),
-})
+hop.setup({})
+
+-- vim.keymap.set("", "f", function()
+-- 	hop.hint_char1({ current_line_only = true })
+-- end, { remap = true })
+
+vim.keymap.set("", "f", function()
+	hop.hint_words()
+end, { remap = true })

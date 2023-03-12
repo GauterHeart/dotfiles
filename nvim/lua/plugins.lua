@@ -73,6 +73,16 @@ lazy.setup({
 	"windwp/nvim-autopairs",
 	"lukas-reineke/indent-blankline.nvim",
 	"numToStr/Comment.nvim",
+	"SmiteshP/nvim-navic",
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"kyazdani42/nvim-web-devicons",
+		},
+		opts = {},
+	},
 
 	-- Nvim
 	"nvim-lualine/lualine.nvim",

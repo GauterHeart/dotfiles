@@ -113,6 +113,7 @@ vim.keymap.set("n", "sf", function()
 		path = "%:p:h",
 		cwd = telescope_buffer_dir(),
 		respect_gitignore = true,
+		git_status = false,
 		hidden = true,
 		grouped = true,
 		previewer = false,

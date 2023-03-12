@@ -6,12 +6,15 @@ if not status then
 end
 
 local util = require("lspconfig/util")
+local navic = require("nvim-navic")
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "cd", vim.diagnostic.open_float, opts)
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+	navic.attach(client, bufnr)
 
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -67,7 +70,7 @@ nvim_lsp.pyright.setup({
 })
 
 nvim_lsp.pylsp.setup({
-	on_attach = on_attach,
+	-- on_attach = on_attach,
 	-- 	capabilities = capabilities,
 	filetypes = { "python" },
 	single_file_support = true,
