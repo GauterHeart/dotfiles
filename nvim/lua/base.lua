@@ -28,6 +28,8 @@ vim.opt.cursorline = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.shell = "fish"
+
+vim.o.showtabline = 2
 -- vim.opt.cursorcolumn = true
 
 -- Tab

@@ -35,7 +35,6 @@ lazy.setup({
 	"jose-elias-alvarez/null-ls.nvim", -- Linter, Diagnostic ...
 	"L3MON4D3/LuaSnip", -- Snippet Engine
 	"ray-x/lsp_signature.nvim",
-	"folke/trouble.nvim",
 
 	-- Lsp installer
 	"williamboman/mason.nvim",
@@ -46,7 +45,6 @@ lazy.setup({
 	"lukas-reineke/cmp-under-comparator",
 	"hrsh7th/cmp-buffer", -- nvim-cmp source for buffer words
 	"hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim's built-in LSP
-	"hrsh7th/cmp-nvim-lsp-signature-help",
 
 	-- Fzf
 	"nvim-telescope/telescope.nvim",
@@ -54,10 +52,9 @@ lazy.setup({
 	"nvim-telescope/telescope-file-browser.nvim",
 
 	-- Terminal
-	"numToStr/FTerm.nvim",
+	-- "numToStr/FTerm.nvim",
 
 	-- Git
-	"kdheepak/lazygit.nvim",
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
 
@@ -73,16 +70,16 @@ lazy.setup({
 	"windwp/nvim-autopairs",
 	"lukas-reineke/indent-blankline.nvim",
 	"numToStr/Comment.nvim",
-	"SmiteshP/nvim-navic",
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"kyazdani42/nvim-web-devicons",
-		},
-		opts = {},
-	},
+	-- "SmiteshP/nvim-navic",
+	-- {
+	-- 	"utilyre/barbecue.nvim",
+	-- 	name = "barbecue",
+	-- 	dependencies = {
+	-- 		"SmiteshP/nvim-navic",
+	-- 		"kyazdani42/nvim-web-devicons",
+	-- 	},
+	-- 	opts = {},
+	-- },
 
 	-- Nvim
 	"nvim-lualine/lualine.nvim",
@@ -92,6 +89,8 @@ lazy.setup({
 
 	-- Icons
 	"kyazdani42/nvim-web-devicons",
+
+	"nanozuki/tabby.nvim",
 
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin" },
