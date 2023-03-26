@@ -114,7 +114,10 @@ cursor:
 
 shell:
   program: /opt/homebrew/bin/fish
-
-key_bindings:
-  - { key: Space,  mods: Control, action: ToggleViMode}
+  args:
+    - -l
+    - -c
+    - "fish ~/.config/alacritty/session.fish"
+# key_bindings:
+#   - { key: Space,  mods: Control, action: ToggleViMode}
 
