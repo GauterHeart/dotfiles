@@ -117,7 +117,7 @@ shell:
   args:
     - -l
     - -c
-    - "fish ~/.config/alacritty/session.fish"
+    - "~/.config/alacritty/session.sh"
 # key_bindings:
 #   - { key: Space,  mods: Control, action: ToggleViMode}
 
