@@ -69,30 +69,30 @@ nvim_lsp.pyright.setup({
 	},
 })
 
-nvim_lsp.pylsp.setup({
-	-- on_attach = on_attach,
-	-- 	capabilities = capabilities,
-	filetypes = { "python" },
-	single_file_support = true,
-	cmd = { "pylsp" },
-	settings = {
-		pylsp = {
-			plugins = {
-				-- jedi_environment = "venv",
-				jedi_completion = { enabled = false },
-				jedi_hover = { enabled = false },
-				jedi_references = { enabled = false },
-				jedi_signature_help = { enabled = false },
-				jedi_symbols = { enabled = false, all_scopes = false },
-				pycodestyle = { enabled = false },
-				pyflakes = { enabled = false },
-				flake8 = { enabled = true },
-				mypy = { enabled = true },
-				pylint = {enabled = false}
-			},
-		},
-	},
-})
+-- nvim_lsp.pylsp.setup({
+-- 	-- on_attach = on_attach,
+-- 	-- 	capabilities = capabilities,
+-- 	filetypes = { "python" },
+-- 	single_file_support = true,
+-- 	cmd = { "pylsp" },
+-- 	settings = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				-- jedi_environment = "venv",
+-- 				jedi_completion = { enabled = false },
+-- 				jedi_hover = { enabled = false },
+-- 				jedi_references = { enabled = false },
+-- 				jedi_signature_help = { enabled = false },
+-- 				jedi_symbols = { enabled = false, all_scopes = false },
+-- 				pycodestyle = { enabled = false },
+-- 				pyflakes = { enabled = false },
+-- 				flake8 = { enabled = true },
+-- 				mypy = { enabled = true },
+-- 				pylint = {enabled = false}
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 nvim_lsp.tsserver.setup({
 	on_attach = on_attach,

@@ -4,15 +4,36 @@ if not status then
 end
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
+local theme = require("telescope.themes")
 local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
 end
 
 telescope.load_extension("harpoon")
-local picker_style = { theme = "dropdown" }
+local picker_style = theme.get_dropdown({
+	winblend = 0,
+	border = true,
+	previewer = false,
+	shorten_path = false,
+	heigth = 20,
+	width = 120,
+})
+
+local picker_style_previewer = theme.get_dropdown({
+	winblend = 0,
+	border = true,
+	previewer = true,
+	shorten_path = false,
+	heigth = 20,
+	width = 120,
+})
 
 telescope.setup({
 	defaults = {
+		history = {
+			path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+			limit = 100,
+		},
 		file_ignore_patterns = {
 			"node_modules/.*",
 			"venv/.*",
@@ -32,13 +53,13 @@ telescope.setup({
 		},
 	},
 	pickers = {
-		find_files = { theme = "dropdown", mappings = {} },
-		live_grep = picker_style,
+		find_files = picker_style,
+		live_grep = picker_style_previewer,
 		buffers = picker_style,
 		current_buffer_fuzzy_find = picker_style,
-		diagnostics = picker_style,
-		lsp_references = picker_style,
-		treesitter = picker_style,
+		diagnostics = picker_style_previewer,
+		lsp_references = picker_style_previewer,
+		treesitter = picker_style_previewer,
 		git_branches = picker_style,
 		git_commits = picker_style,
 	},
@@ -48,7 +69,7 @@ telescope.setup({
 			override_file_sorter = true,
 		},
 		file_browser = {
-			theme = "ivy",
+			theme = "dropdown",
 			hijack_netrw = false,
 			mappings = {
 				i = {
@@ -61,6 +82,9 @@ telescope.setup({
 					end,
 				},
 				["n"] = {},
+			},
+			tele_tabby = {
+				use_highlighter = true,
 			},
 		},
 	},
@@ -118,8 +142,14 @@ vim.keymap.set("n", "sf", function()
 		grouped = true,
 		previewer = false,
 		initial_mode = "insert",
-		layout_config = { height = 40 },
+		-- layout_config = { height = 40 },
+		heigth = 20,
+		width = 120,
 	})
+end)
+
+vim.keymap.set("n", ";t", function()
+	telescope.extensions.tele_tabby.list(picker_style)
 end)
 
 vim.keymap.set("n", ";;", "<cmd>Telescope harpoon marks theme=dropdown<cr>")

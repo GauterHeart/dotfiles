@@ -36,3 +36,6 @@ keymap.set("", "q", "<Nop>")
 -- keymap.set("", "\'", "<Nop>")
 -- keymap.set("", "<C-m>", "<Nop>")
 -- keymap.set("", "<C-n>", "<Nop>")
+
+-- Move
+vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })

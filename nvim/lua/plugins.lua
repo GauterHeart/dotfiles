@@ -50,9 +50,10 @@ lazy.setup({
 	"nvim-telescope/telescope.nvim",
 	"nvim-telescope/telescope-fzy-native.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
+	"TC72/telescope-tele-tabby.nvim",
 
 	-- Terminal
-	-- "numToStr/FTerm.nvim",
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
 	-- Git
 	"lewis6991/gitsigns.nvim",
@@ -70,6 +71,8 @@ lazy.setup({
 	"windwp/nvim-autopairs",
 	"lukas-reineke/indent-blankline.nvim",
 	"numToStr/Comment.nvim",
+	"nanozuki/tabby.nvim",
+
 	-- "SmiteshP/nvim-navic",
 	-- {
 	-- 	"utilyre/barbecue.nvim",
@@ -84,13 +87,10 @@ lazy.setup({
 	-- Nvim
 	"nvim-lualine/lualine.nvim",
 	"phaazon/hop.nvim",
-	"folke/zen-mode.nvim",
 	"ThePrimeagen/harpoon",
 
 	-- Icons
 	"kyazdani42/nvim-web-devicons",
-
-	"nanozuki/tabby.nvim",
 
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin" },

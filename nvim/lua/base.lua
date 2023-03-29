@@ -28,6 +28,7 @@ vim.opt.cursorline = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.shell = "fish"
+vim.o.timeoutlen = 400
 
 vim.o.showtabline = 2
 -- vim.opt.cursorcolumn = true
@@ -46,8 +47,8 @@ vim.opt.breakindent = true
 -- ???
 
 -- UI
--- vim.opt.guifont = { "Hack Nerd Font Mono", "h12" }
-vim.opt.guifont = { "FiraCode Nerd Font Mono", ":h16" }
+vim.opt.guifont = { "Hack Nerd Font Mono", ":h18" }
+-- vim.opt.guifont = { "FiraCode Nerd Font Mono", ":h16" }
 vim.g.neovide_cursor_vfx_mode = "sonicboom"
 vim.g.neovide_input_use_logo = 1
 -- vim.g.neovide_transparency = 0.9
