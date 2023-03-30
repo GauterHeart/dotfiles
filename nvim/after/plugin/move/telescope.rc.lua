@@ -17,6 +17,7 @@ local picker_style = theme.get_dropdown({
 	shorten_path = false,
 	heigth = 20,
 	width = 120,
+	prompt_title = "",
 })
 
 local picker_style_previewer = theme.get_dropdown({
@@ -26,6 +27,8 @@ local picker_style_previewer = theme.get_dropdown({
 	shorten_path = false,
 	heigth = 20,
 	width = 120,
+	prompt_title = "",
+	preview_title = "",
 })
 
 telescope.setup({
@@ -145,6 +148,7 @@ vim.keymap.set("n", "sf", function()
 		-- layout_config = { height = 40 },
 		heigth = 20,
 		width = 120,
+		prompt_title = "",
 	})
 end)
 
