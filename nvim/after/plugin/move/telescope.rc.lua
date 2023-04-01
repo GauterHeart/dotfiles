@@ -9,27 +9,31 @@ local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
 end
 
-telescope.load_extension("harpoon")
-local picker_style = theme.get_dropdown({
-	winblend = 0,
-	border = true,
-	previewer = false,
-	shorten_path = false,
-	heigth = 20,
-	width = 120,
-	prompt_title = "",
-})
+local function picker_style(etc)
+	local config = {
+		winblend = 0,
+		border = true,
+		shorten_path = false,
+		heigth = 20,
+		width = 120,
+		prompt_title = "",
+		preview_title = "",
+		borderchars = {
+			{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+			prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+			results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+			preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		},
+	}
+	for k, v in pairs(etc) do
+		config[k] = v
+	end
 
-local picker_style_previewer = theme.get_dropdown({
-	winblend = 0,
-	border = true,
-	previewer = true,
-	shorten_path = false,
-	heigth = 20,
-	width = 120,
-	prompt_title = "",
-	preview_title = "",
-})
+	return config
+end
+
+local picker = theme.get_dropdown(picker_style({ previewer = false }))
+local picker_previewer = theme.get_dropdown(picker_style({ preview_title = "", previewer = true }))
 
 telescope.setup({
 	defaults = {
@@ -56,15 +60,15 @@ telescope.setup({
 		},
 	},
 	pickers = {
-		find_files = picker_style,
-		live_grep = picker_style_previewer,
-		buffers = picker_style,
-		current_buffer_fuzzy_find = picker_style,
-		diagnostics = picker_style_previewer,
-		lsp_references = picker_style_previewer,
-		treesitter = picker_style_previewer,
-		git_branches = picker_style,
-		git_commits = picker_style,
+		find_files = picker,
+		live_grep = picker_previewer,
+		buffers = picker,
+		current_buffer_fuzzy_find = picker,
+		diagnostics = picker_previewer,
+		lsp_references = picker_previewer,
+		treesitter = picker_previewer,
+		git_branches = picker,
+		git_commits = picker,
 	},
 	extensions = {
 		fzy_native = {
@@ -86,13 +90,14 @@ telescope.setup({
 				},
 				["n"] = {},
 			},
-			tele_tabby = {
-				use_highlighter = true,
-			},
+		},
+		tele_tabby = {
+			use_highlighter = true,
 		},
 	},
 })
 
+telescope.load_extension("harpoon")
 telescope.load_extension("fzy_native")
 telescope.load_extension("file_browser")
 
@@ -156,4 +161,6 @@ vim.keymap.set("n", ";t", function()
 	telescope.extensions.tele_tabby.list(picker_style)
 end)
 
-vim.keymap.set("n", ";;", "<cmd>Telescope harpoon marks theme=dropdown<cr>")
+vim.keymap.set("n", ";;", function()
+	telescope.extensions.harpoon.marks(picker)
+end)

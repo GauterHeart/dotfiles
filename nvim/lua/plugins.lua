@@ -34,7 +34,6 @@ lazy.setup({
 	"onsails/lspkind-nvim", -- vscode-like pictograms
 	"jose-elias-alvarez/null-ls.nvim", -- Linter, Diagnostic ...
 	"L3MON4D3/LuaSnip", -- Snippet Engine
-	"ray-x/lsp_signature.nvim",
 
 	-- Lsp installer
 	"williamboman/mason.nvim",
