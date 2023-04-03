@@ -4,12 +4,12 @@ if not status then
 end
 
 local sources = {
-	null_ls.builtins.diagnostics.flake8.with({
-		prefer_local = "venv/bin",
-		filetypes = { "python" },
-		args = { "--format", "default", "--stdin-display-name", "$FILENAME", "-" },
-		diagnostics_format = "[flake8] #{m}\n(#{c})",
-	}),
+	-- null_ls.builtins.diagnostics.flake8.with({
+	-- 	prefer_local = "venv/bin",
+	-- 	filetypes = { "python" },
+	-- 	args = { "--format", "default", "--stdin-display-name", "$FILENAME", "-" },
+	-- 	diagnostics_format = "[flake8] #{m}\n(#{c})",
+	-- }),
 	-- null_ls.builtins.diagnostics.mypy.with({
 	-- 	prefer_local = "venv/bin",
 	-- 	filetypes = { "python" },

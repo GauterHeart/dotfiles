@@ -93,4 +93,5 @@ lazy.setup({
 
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "rose-pine/neovim", name = "rose-pine" },
 })

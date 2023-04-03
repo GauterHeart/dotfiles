@@ -50,6 +50,8 @@ vim.diagnostic.config({
 vim.o.updatetime = 0
 
 -- The main servers
+
+
 nvim_lsp.pyright.setup({
 	on_attach = on_attach,
 	-- 	capabilities = capabilities,
@@ -65,6 +67,18 @@ nvim_lsp.pyright.setup({
 				typeCheckingMode = "off",
 				reportUnusedVariable = "off",
 			},
+		},
+	},
+})
+
+nvim_lsp.ruff_lsp.setup({
+	on_attach = on_attach,
+	filetypes = { "python" },
+	single_file_support = true,
+	cmd = { "ruff-lsp" },
+	init_options = {
+		settings = {
+			args = {},
 		},
 	},
 })
@@ -87,7 +101,7 @@ nvim_lsp.pyright.setup({
 -- 				pycodestyle = { enabled = false },
 -- 				pyflakes = { enabled = false },
 -- 				flake8 = { enabled = true },
--- 				mypy = { enabled = true },
+-- 				-- mypy = { enabled = true },
 -- 				pylint = {enabled = false}
 -- 			},
 -- 		},

@@ -37,10 +37,10 @@ local picker_previewer = theme.get_dropdown(picker_style({ preview_title = "", p
 
 telescope.setup({
 	defaults = {
-		history = {
-			path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
-			limit = 100,
-		},
+		-- history = {
+		-- 	path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+		-- 	limit = 100,
+		-- },
 		file_ignore_patterns = {
 			"node_modules/.*",
 			"venv/.*",
@@ -141,7 +141,7 @@ vim.keymap.set("n", ";gc", function()
 end)
 
 vim.keymap.set("n", "sf", function()
-	telescope.extensions.file_browser.file_browser({
+	telescope.extensions.file_browser.file_browser(picker_style({
 		path = "%:p:h",
 		cwd = telescope_buffer_dir(),
 		respect_gitignore = true,
@@ -151,10 +151,7 @@ vim.keymap.set("n", "sf", function()
 		previewer = false,
 		initial_mode = "insert",
 		-- layout_config = { height = 40 },
-		heigth = 20,
-		width = 120,
-		prompt_title = "",
-	})
+	}))
 end)
 
 vim.keymap.set("n", ";t", function()
