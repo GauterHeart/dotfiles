@@ -155,9 +155,13 @@ vim.keymap.set("n", "sf", function()
 end)
 
 vim.keymap.set("n", ";t", function()
-	telescope.extensions.tele_tabby.list(picker_style)
+	telescope.extensions.tele_tabby.list(picker)
 end)
 
 vim.keymap.set("n", ";;", function()
 	telescope.extensions.harpoon.marks(picker)
+end)
+
+vim.keymap.set("n", "<F1>", function()
+	builtin.resume()
 end)
