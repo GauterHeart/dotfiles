@@ -6,7 +6,7 @@ end
 
 lazy.setup({
 	defaults = {
-		lazy = true, -- should plugins be lazy-loaded?
+		lazy = false, -- should plugins be lazy-loaded?
 	},
 	performance = {
 		cache = {
@@ -87,6 +87,8 @@ lazy.setup({
 	"nvim-lualine/lualine.nvim",
 	"phaazon/hop.nvim",
 	"ThePrimeagen/harpoon",
+	"rcarriga/nvim-notify",
+	"folke/noice.nvim",
 
 	-- Icons
 	"kyazdani42/nvim-web-devicons",

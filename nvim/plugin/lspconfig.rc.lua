@@ -6,27 +6,30 @@ if not status then
 end
 
 local util = require("lspconfig/util")
--- local navic = require("nvim-navic")
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "cd", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "cd", vim.diagnostic.open_float, { noremap = true, silent = true })
 
-local on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-	-- navic.attach(client, bufnr)
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
 
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<leader>cf", function()
-		vim.lsp.buf.format({ async = true })
-	end, bufopts)
-end
+		local opts = { buffer = ev.buf }
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "<leader>gr", vim.lsp.buf.rename, opts)
+		vim.keymap.set("n", "<leader>cf", function()
+			vim.lsp.buf.format({ async = true })
+		end, opts)
+	end,
+})
 
 -- Diagnostic
 local signs = {
@@ -51,9 +54,8 @@ vim.o.updatetime = 0
 
 -- The main servers
 
-
 nvim_lsp.pyright.setup({
-	on_attach = on_attach,
+	-- on_attach = on_attach,
 	-- 	capabilities = capabilities,
 	filetypes = { "python" },
 	single_file_support = true,
@@ -71,17 +73,17 @@ nvim_lsp.pyright.setup({
 	},
 })
 
-nvim_lsp.ruff_lsp.setup({
-	on_attach = on_attach,
-	filetypes = { "python" },
-	single_file_support = true,
-	cmd = { "ruff-lsp" },
-	init_options = {
-		settings = {
-			args = {},
-		},
-	},
-})
+-- nvim_lsp.ruff_lsp.setup({
+-- 	on_attach = on_attach,
+-- 	filetypes = { "python" },
+-- 	single_file_support = true,
+-- 	cmd = { "ruff-lsp" },
+-- 	init_options = {
+-- 		settings = {
+-- 			args = {},
+-- 		},
+-- 	},
+-- })
 
 -- nvim_lsp.pylsp.setup({
 -- 	-- on_attach = on_attach,
@@ -109,7 +111,7 @@ nvim_lsp.ruff_lsp.setup({
 -- })
 
 nvim_lsp.tsserver.setup({
-	on_attach = on_attach,
+	-- on_attach = on_attach,
 	filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
 	cmd = { "typescript-language-server", "--stdio" },
 })
