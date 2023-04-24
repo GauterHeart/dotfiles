@@ -124,8 +124,32 @@ vim.keymap.set("n", ";e", function()
 	builtin.diagnostics({ bufnr = 0 })
 end)
 
-vim.keymap.set("n", ";t", function()
+vim.keymap.set("n", ";a", function()
 	builtin.treesitter()
+end)
+
+vim.keymap.set("n", ";v", function()
+	builtin.treesitter({
+		symbols = {'var'}
+	})
+end)
+
+vim.keymap.set("n", ";b", function()
+	builtin.treesitter({
+		symbols = {'type'}
+	})
+end)
+
+vim.keymap.set("n", ";c", function()
+	builtin.treesitter({
+		symbols = {'function'}
+	})
+end)
+
+vim.keymap.set("n", ";n", function()
+	builtin.treesitter({
+		symbols = {'field'}
+	})
 end)
 
 vim.keymap.set("n", ";d", function()

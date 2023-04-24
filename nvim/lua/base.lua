@@ -58,3 +58,5 @@ vim.g.neovide_refresh_rate = 120
 vim.g.neovide_input_macos_alt_is_meta = 1
 
 -- vim.cmd[[highlight! BorderBG guibg=NONE]]
+
+vim.cmd("autocmd VimEnter * :clearjumps")

@@ -3,6 +3,7 @@ local keymap = vim.keymap
 -- Delete without clipboard
 keymap.set("n", "dw", 'vb"_d')
 keymap.set("n", "D", '"_D')
+keymap.set("v", "d", '"_d')
 keymap.set("n", "dd", '"_dd')
 
 -- Cut and write without clipboard
@@ -10,6 +11,8 @@ keymap.set("n", "C", '"_C')
 keymap.set("n", "cc", '"_cc')
 keymap.set("n", "ce", '"_ce')
 keymap.set("n", "cb", '"_cb')
+
+keymap.set("n", "x", '"_ca')
 
 -- Split window
 keymap.set("n", "ss", "<cmd>split<Return><C-w>w")
@@ -43,3 +46,9 @@ keymap.set("", "q", "<Nop>")
 -- Move
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i", "<F1>", "<Esc>", { noremap = true, silent = true })
+vim.keymap.set("n", "m", ";", { noremap = true, silent = true })
+
+
+-- Buffer
+-- keymap.set("n", "<C-i>", "<cmd>bnext<CR>")
+-- keymap.set("n", "<C-o>", "<cmd>bprevious<CR>")
