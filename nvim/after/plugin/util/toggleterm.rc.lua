@@ -11,7 +11,7 @@ toggleterm.setup({
 
 function _G.set_terminal_keymaps()
 	local opts = { buffer = 0 }
-	vim.keymap.set("t", "jj", [[<C-\><C-n>]], opts)
+	vim.keymap.set("t", "<F1>", [[<C-\><C-n>]], opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead

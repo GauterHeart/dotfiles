@@ -11,14 +11,22 @@ keymap.set("n", "C", '"_C')
 keymap.set("n", "cc", '"_cc')
 keymap.set("n", "ce", '"_ce')
 keymap.set("n", "cb", '"_cb')
+keymap.set("n", "c", '"_c')
+keymap.set("v", "c", '"_c')
 
 keymap.set("n", "x", '"_ca')
+
+-- Paste and write without clipboard
+keymap.set("n", "p", '"0p')
+keymap.set("n", "P", '"0P')
+keymap.set("v", "p", '"0p')
+
 
 -- Split window
 keymap.set("n", "ss", "<cmd>split<Return><C-w>w")
 keymap.set("n", "sv", "<cmd>vsplit<Return><C-w>w")
 -- Move window
-keymap.set("n", "<F2>", "<C-w>w")
+keymap.set("n", "s<Space>", "<C-w>w")
 keymap.set("", "sh", "<C-w>h")
 keymap.set("", "sk", "<C-w>k")
 keymap.set("", "sj", "<C-w>j")
@@ -39,6 +47,7 @@ vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 
 keymap.set("", "q", "<Nop>")
+keymap.set("", "s", "<Nop>")
 -- keymap.set("", "\'", "<Nop>")
 -- keymap.set("", "<C-m>", "<Nop>")
 -- keymap.set("", "<C-n>", "<Nop>")

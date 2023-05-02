@@ -30,7 +30,7 @@ vim.opt.ignorecase = true
 vim.opt.shell = "fish"
 vim.o.timeoutlen = 400
 
-vim.o.showtabline = 2
+vim.o.showtabline = 0
 -- vim.opt.cursorcolumn = true
 
 -- Tab
