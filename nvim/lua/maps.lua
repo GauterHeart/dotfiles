@@ -55,7 +55,7 @@ keymap.set("", "s", "<Nop>")
 -- Move
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i", "<F1>", "<Esc>", { noremap = true, silent = true })
-vim.keymap.set("n", "m", ";", { noremap = true, silent = true })
+vim.keymap.set({"n", "v"}, "m", ";", { noremap = true, silent = true })
 
 
 -- Buffer

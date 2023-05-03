@@ -25,6 +25,7 @@ local function picker_style(etc)
 			preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		},
 	}
+
 	for k, v in pairs(etc) do
 		config[k] = v
 	end
@@ -34,6 +35,17 @@ end
 
 local picker = theme.get_dropdown(picker_style({ previewer = false }))
 local picker_previewer = theme.get_dropdown(picker_style({ preview_title = "", previewer = true }))
+local picker_buffer = theme.get_dropdown(picker_style({
+	previewer = false,
+	mappings = {
+		i = {
+			["<C-d>"] = actions.delete_buffer,
+		},
+		n = {
+			["<C-d>"] = actions.delete_buffer,
+		},
+	},
+}))
 
 telescope.setup({
 	defaults = {
@@ -62,7 +74,7 @@ telescope.setup({
 	pickers = {
 		find_files = picker,
 		live_grep = picker_previewer,
-		buffers = picker,
+		buffers = picker_buffer,
 		current_buffer_fuzzy_find = picker,
 		diagnostics = picker_previewer,
 		lsp_references = picker_previewer,
@@ -94,12 +106,16 @@ telescope.setup({
 		tele_tabby = {
 			use_highlighter = true,
 		},
+		frecency = {
+			theme = "dropdown",
+		},
 	},
 })
 
 telescope.load_extension("harpoon")
 telescope.load_extension("fzy_native")
 telescope.load_extension("file_browser")
+telescope.load_extension("neoclip")
 
 vim.keymap.set("n", ";f", function()
 	builtin.find_files({
@@ -112,8 +128,13 @@ vim.keymap.set("n", ";r", function()
 	builtin.live_grep()
 end)
 
-vim.keymap.set("n", "\\\\", function()
-	builtin.buffers()
+vim.keymap.set("n", ";a", function()
+	builtin.buffers({
+		show_all_buffers = false,
+		ignore_current_buffer = true,
+		only_cwd = true,
+		sort_lastused = true,
+	})
 end)
 
 vim.keymap.set("n", ";E", function()
@@ -124,31 +145,31 @@ vim.keymap.set("n", ";e", function()
 	builtin.diagnostics({ bufnr = 0 })
 end)
 
-vim.keymap.set("n", ";a", function()
+vim.keymap.set("n", ";s", function()
 	builtin.treesitter()
 end)
 
 vim.keymap.set("n", ";v", function()
 	builtin.treesitter({
-		symbols = {'var'}
+		symbols = { "var" },
 	})
 end)
 
 vim.keymap.set("n", ";b", function()
 	builtin.treesitter({
-		symbols = {'type'}
+		symbols = { "type" },
 	})
 end)
 
 vim.keymap.set("n", ";c", function()
 	builtin.treesitter({
-		symbols = {'function'}
+		symbols = { "function" },
 	})
 end)
 
 vim.keymap.set("n", ";n", function()
 	builtin.treesitter({
-		symbols = {'field'}
+		symbols = { "field" },
 	})
 end)
 
@@ -188,4 +209,8 @@ end)
 
 vim.keymap.set("n", "<F1>", function()
 	builtin.resume()
+end)
+
+vim.keymap.set("n", ";<F1>", function()
+	telescope.extensions.neoclip.default(picker_previewer)
 end)
