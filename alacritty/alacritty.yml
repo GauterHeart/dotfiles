@@ -1,5 +1,6 @@
 import:
-  - ~/.config/alacritty/rose-pine.yml
+  # - ~/.config/alacritty/rose-pine.yml
+  - ~/.config/alacritty/catppuccin_mocha.yaml
 
 font:
   normal:
@@ -25,6 +26,10 @@ font:
 #   opacity: 1
 #   decorations: full
 #   startup_mode: SimpleFullscreen
+#   padding:
+#     x: 0
+#     y: 0
+#   dynamic_padding: true
 
 window:
   opacity: 1
@@ -34,6 +39,12 @@ window:
     x: 0
     y: 0
   dynamic_padding: true
+# window:
+#   vertical_chars: 50
+#   horizontal_chars: 100
+#   starting_x_offset: 100
+#   starting_y_offset: 100
+#   startup_mode: Maximized
 
 mouse:
   hide_when_typing: true
