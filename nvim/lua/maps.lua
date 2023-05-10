@@ -17,10 +17,10 @@ keymap.set("v", "c", '"_c')
 keymap.set("n", "x", '"_ca')
 
 -- Paste and write without clipboard
-keymap.set("n", "p", '"0p')
-keymap.set("n", "P", '"0P')
-keymap.set("v", "p", '"0p')
-
+-- keymap.set("n", "p", '"0p')
+-- keymap.set("n", "P", '"0P')
+-- keymap.set("v", "p", '"0p')
+-- keymap.set("v", "p", '"_xp')
 
 -- Split window
 keymap.set("n", "ss", "<cmd>split<Return><C-w>w")
@@ -34,6 +34,7 @@ keymap.set("", "sl", "<C-w>l")
 
 -- Tab
 keymap.set("n", "tt", "<cmd>tabnew<CR>")
+keymap.set("n", "ts", "<cmd>tab split<CR>")
 keymap.set("n", "tn", "<cmd>tabnext<CR>")
 keymap.set("n", "tb", "<cmd>tabprev<CR>")
 
@@ -55,8 +56,7 @@ keymap.set("", "s", "<Nop>")
 -- Move
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i", "<F1>", "<Esc>", { noremap = true, silent = true })
-vim.keymap.set({"n", "v"}, "m", ";", { noremap = true, silent = true })
-
+vim.keymap.set({ "n", "v" }, "m", ";", { noremap = true, silent = true })
 
 -- Buffer
 -- keymap.set("n", "<C-i>", "<cmd>bnext<CR>")

@@ -52,7 +52,7 @@ lazy.setup({
 	"nvim-telescope/telescope-file-browser.nvim",
 	"TC72/telescope-tele-tabby.nvim",
 	"AckslD/nvim-neoclip.lua",
-
+	{ "renerocksai/telekasten.nvim", commit = "67c5758a13352d6dcfdf9353283956c34ca06d3b" },
 	-- Terminal
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
@@ -74,17 +74,6 @@ lazy.setup({
 	"numToStr/Comment.nvim",
 	"nanozuki/tabby.nvim",
 
-	-- "SmiteshP/nvim-navic",
-	-- {
-	-- 	"utilyre/barbecue.nvim",
-	-- 	name = "barbecue",
-	-- 	dependencies = {
-	-- 		"SmiteshP/nvim-navic",
-	-- 		"kyazdani42/nvim-web-devicons",
-	-- 	},
-	-- 	opts = {},
-	-- },
-
 	-- Nvim
 	"nvim-lualine/lualine.nvim",
 	"phaazon/hop.nvim",
@@ -93,9 +82,16 @@ lazy.setup({
 	"folke/noice.nvim",
 
 	-- Icons
-	"kyazdani42/nvim-web-devicons",
+	"nvim-tree/nvim-web-devicons",
 
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin" },
 	{ "rose-pine/neovim", name = "rose-pine" },
+	-- {
+	--   "iamcco/markdown-preview.nvim",
+	--   ft = "markdown",
+	--   build = function()
+	--     vim.fn["mkdp#util#install"]()
+	--   end,
+	-- },
 })

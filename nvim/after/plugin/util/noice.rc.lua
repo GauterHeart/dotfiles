@@ -20,7 +20,7 @@ noice.setup({
 			enabled = false,
 		},
 		signature = {
-			enabled = true,
+			enabled = false,
 			auto_open = {
 				enabled = false,
 				trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
@@ -33,7 +33,7 @@ noice.setup({
 		},
 		message = {
 			-- Messages shown by lsp servers
-			enabled = true,
+			enabled = false,
 			view = "notify",
 			opts = {},
 		},
@@ -60,7 +60,7 @@ noice.setup({
 		view = "notify",
 	},
 	messages = {
-		enabled = true, -- enables the Noice messages UI
+		enabled = false, -- enables the Noice messages UI
 		view = "notify", -- default view for messages
 		view_error = false, -- view for errors
 		view_warn = false, -- view for warnings

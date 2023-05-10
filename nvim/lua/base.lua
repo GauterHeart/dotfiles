@@ -32,7 +32,9 @@ vim.o.timeoutlen = 400
 
 vim.o.showtabline = 2
 -- vim.opt.cursorcolumn = true
-
+vim.opt.list = true
+vim.opt.listchars = { eol = "↵" }
+vim.cmd("set listchars+=tab:\\ \\ ")
 -- Tab
 vim.opt.smarttab = true
 -- vim.opt.scrolloff = 1000
@@ -43,6 +45,8 @@ vim.opt.shiftwidth = 4
 --vim.opt.expandtab = true
 
 vim.opt.breakindent = true
+
+vim.opt.wildoptions = "fuzzy"
 
 -- ???
 

@@ -18,12 +18,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 
 		local opts = { buffer = ev.buf }
+
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "<leader>gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 		vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "<leader>gr", vim.lsp.buf.rename, opts)
 		vim.keymap.set("n", "<leader>cf", function()
 			vim.lsp.buf.format({ async = true })
@@ -33,10 +35,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Diagnostic
 local signs = {
-	Error = "",
-	Warning = "",
-	Hint = "",
-	Information = "",
+	Error = "",
+	Warn = "󰥲",
+	Hint = "",
+	Info = "",
 }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
@@ -64,9 +66,9 @@ nvim_lsp.pyright.setup({
 		python = {
 			analysis = {
 				autoSearchPaths = true,
-				diagnosticMode = "workspace",
+				-- diagnosticMode = "workspace",
 				useLibraryCodeForTypes = true,
-				typeCheckingMode = "off",
+				typeCheckingMode = "on",
 				reportUnusedVariable = "off",
 			},
 		},
@@ -148,3 +150,9 @@ nvim_lsp.lua_ls.setup({
 -- Utils LSP
 nvim_lsp.bashls.setup({})
 nvim_lsp.jsonls.setup({})
+nvim_lsp.marksman.setup({
+	cmd = { "marksman", "server" },
+	filetypes = { "markdown" },
+	single_file_support = true,
+	root_dir = util.root_pattern(".git", ".marksman.toml"),
+})

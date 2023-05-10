@@ -6,6 +6,7 @@ end
 vim.g.catppuccin_flavour = "mocha"
 catppuccin.setup({
 	transparent_background = false,
+	floating_border = "on",
 	term_colors = true,
 	compile = {
 		enabled = true,
@@ -46,8 +47,10 @@ catppuccin.setup({
 		hop = true,
 		telescope = true,
 		harpoon = true,
-		fidget = true,
-		neotree = { enabled = true, show_root = false, transparent_panel = false },
+		neotree = { enabled = true, show_root = false, border = false },
+		mason = true,
+		noice = true,
+		notify = true,
 	},
 })
 -- vim.cmd([[colorscheme catppuccin]])

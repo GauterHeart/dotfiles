@@ -28,9 +28,11 @@ cmp.setup({
 		completion = {
 			border = border("CmpBorder"),
 			winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
+			-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
 		},
 		documentation = {
 			border = border("CmpDocBorder"),
+			-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
 		},
 	},
 	snippet = {

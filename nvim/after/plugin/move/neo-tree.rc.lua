@@ -118,6 +118,7 @@ tree.setup({
 				"*.meta",
 				"*/src/*/tsconfig.json",
 				"*/venv/*",
+				"*.null-ls_*",
 			},
 		},
 		follow_current_file = false, -- This will find and focus the file in the active buffer every
@@ -165,4 +166,4 @@ tree.setup({
 	},
 })
 
-vim.keymap.set("n", "<F6>", "<cmd>NeoTreeFloat<cr>")
+vim.keymap.set("n", "se", "<cmd>NeoTreeFloat<cr>")
