@@ -76,7 +76,7 @@ telescope.setup({
 		live_grep = picker_previewer,
 		buffers = picker_buffer,
 		current_buffer_fuzzy_find = picker,
-		diagnostics = picker_previewer,
+		diagnostics = picker,
 		lsp_references = picker_previewer,
 		treesitter = picker_previewer,
 		git_branches = picker,
@@ -138,7 +138,7 @@ vim.keymap.set("n", ";a", function()
 end)
 
 vim.keymap.set("n", ";E", function()
-	builtin.diagnostics()
+	builtin.diagnostics({ root_dir = true })
 end)
 
 vim.keymap.set("n", ";e", function()

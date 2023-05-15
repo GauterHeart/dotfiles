@@ -1,0 +1,6 @@
+-- vim.cmd.colorscheme("rose-pine")
+-- vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("kanagawa")
+-- vim.cmd.colorscheme("duskfox")
+-- vim.cmd.colorscheme("nightfox")
+vim.cmd.colorscheme("carbonfox")

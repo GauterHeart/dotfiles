@@ -53,6 +53,7 @@ lazy.setup({
 	"TC72/telescope-tele-tabby.nvim",
 	"AckslD/nvim-neoclip.lua",
 	{ "renerocksai/telekasten.nvim", commit = "67c5758a13352d6dcfdf9353283956c34ca06d3b" },
+
 	-- Terminal
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
@@ -68,7 +69,6 @@ lazy.setup({
 		"nvim-treesitter/nvim-treesitter",
 		cmd = "TSUpdate",
 	},
-	"danymat/neogen",
 	"windwp/nvim-autopairs",
 	"lukas-reineke/indent-blankline.nvim",
 	"numToStr/Comment.nvim",
@@ -79,7 +79,7 @@ lazy.setup({
 	"phaazon/hop.nvim",
 	"ThePrimeagen/harpoon",
 	"rcarriga/nvim-notify",
-	"folke/noice.nvim",
+	-- "folke/noice.nvim",
 
 	-- Icons
 	"nvim-tree/nvim-web-devicons",
@@ -87,11 +87,6 @@ lazy.setup({
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin" },
 	{ "rose-pine/neovim", name = "rose-pine" },
-	-- {
-	--   "iamcco/markdown-preview.nvim",
-	--   ft = "markdown",
-	--   build = function()
-	--     vim.fn["mkdp#util#install"]()
-	--   end,
-	-- },
+	{"rebelot/kanagawa.nvim", name = "kanagawa"},
+	{ "EdenEast/nightfox.nvim", name = "nightfox" }
 })

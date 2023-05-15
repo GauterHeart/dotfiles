@@ -66,10 +66,10 @@ nvim_lsp.pyright.setup({
 		python = {
 			analysis = {
 				autoSearchPaths = true,
-				-- diagnosticMode = "workspace",
+				diagnosticMode = "workspace",
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "on",
-				reportUnusedVariable = "off",
+				-- reportUnusedVariable = "off",
 			},
 		},
 	},
