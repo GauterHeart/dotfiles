@@ -1,6 +1,10 @@
 import:
-  # - ~/.config/alacritty/rose-pine.yml
-  - ~/.config/alacritty/catppuccin_mocha.yaml
+  # - ~/.config/alacritty/colorschema/rose-pine.yaml
+  # - ~/.config/alacritty/colorschema/catppuccin_mocha.yaml
+  # - ~/.config/alacritty/colorschema/kanagawa.yaml
+  # - ~/.config/alacritty/colorschema/nightfox.yaml
+  # - ~/.config/alacritty/colorschema/duskfox.yaml
+  - ~/.config/alacritty/colorschema/carbonfox.yaml
 
 font:
   normal:
@@ -19,7 +23,7 @@ font:
     family: Hack Nerd Font Mono
     style: Bold Italic
 
-  size: 18
+  size: 22
 
 
 # window:
