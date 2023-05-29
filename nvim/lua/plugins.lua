@@ -28,7 +28,6 @@ lazy.setup({
 	"MunifTanjim/nui.nvim",
 	"nvim-lua/plenary.nvim",
 	"nvim-lua/popup.nvim",
-	"kkharji/sqlite.lua",
 
 	-- Lsp
 	"neovim/nvim-lspconfig", -- Lsp Engine
@@ -50,8 +49,8 @@ lazy.setup({
 	"nvim-telescope/telescope.nvim",
 	"nvim-telescope/telescope-fzy-native.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
+	"nvim-telescope/telescope-live-grep-args.nvim",
 	"TC72/telescope-tele-tabby.nvim",
-	"AckslD/nvim-neoclip.lua",
 	{ "renerocksai/telekasten.nvim", commit = "67c5758a13352d6dcfdf9353283956c34ca06d3b" },
 
 	-- Terminal

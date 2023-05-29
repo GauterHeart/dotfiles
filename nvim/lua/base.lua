@@ -17,6 +17,10 @@ vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
+
+-- statusline
+vim.opt.laststatus = 3
+
 -- Base
 vim.opt.number = true
 vim.opt.relativenumber = true

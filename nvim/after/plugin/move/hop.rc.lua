@@ -12,3 +12,7 @@ hop.setup({})
 vim.keymap.set("", "<Space>", function()
 	hop.hint_words()
 end, { remap = true })
+
+vim.keymap.set("", "<Tab><Space>", function()
+	hop.hint_patterns()
+end, { remap = true })

@@ -5,6 +5,7 @@ end
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local theme = require("telescope.themes")
+local lga_actions = require("telescope-live-grep-args.actions")
 local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
 end
@@ -87,6 +88,20 @@ telescope.setup({
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
+    },
 		file_browser = {
 			theme = "dropdown",
 			hijack_netrw = false,
@@ -115,7 +130,7 @@ telescope.setup({
 telescope.load_extension("harpoon")
 telescope.load_extension("fzy_native")
 telescope.load_extension("file_browser")
-telescope.load_extension("neoclip")
+telescope.load_extension("live_grep_args")
 
 vim.keymap.set("n", ";f", function()
 	builtin.find_files({
@@ -125,7 +140,8 @@ vim.keymap.set("n", ";f", function()
 end)
 
 vim.keymap.set("n", ";r", function()
-	builtin.live_grep()
+	-- builtin.live_grep()
+	telescope.extensions.live_grep_args.live_grep_args(picker_previewer)
 end)
 
 vim.keymap.set("n", ";a", function()
@@ -209,8 +225,4 @@ end)
 
 vim.keymap.set("n", "<F1>", function()
 	builtin.resume()
-end)
-
-vim.keymap.set("n", ";<F1>", function()
-	telescope.extensions.neoclip.default(picker_previewer)
 end)
