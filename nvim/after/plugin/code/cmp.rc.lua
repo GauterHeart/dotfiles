@@ -24,11 +24,13 @@ local function border(hl_name)
 end
 
 cmp.setup({
+	experimental = { ghost_text = true },
 	window = {
 		completion = {
 			border = border("CmpBorder"),
 			winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
 			-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
+			scrollbar = false,
 		},
 		documentation = {
 			border = border("CmpDocBorder"),
@@ -41,12 +43,10 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<F11>"] = cmp.mapping.complete(),
-		["<F10>"] = cmp.mapping.complete(),
+        -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
 		["<C-c>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
-		-- ["<C-m>"] = cmp.mapping.complete(),
-		["<F12>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
@@ -60,11 +60,12 @@ cmp.setup({
 		}),
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", max_item_count = 5 },
-		{ name = "luasnip", max_item_count = 5 },
+		{ name = "nvim_lsp", max_item_count = 5, group_index = 1 },
+		{ name = "luasnip", max_item_count = 5, group_index = 1 },
+		-- { name = "buffer", max_item_count = 5, group_index = 2 },
 	}),
 	formatting = {
-		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
+		format = lspkind.cmp_format({ with_text = false, maxwidth = 25 }),
 	},
 	completion = {
 		-- autocomplete = false,
@@ -81,4 +82,25 @@ cmp.setup({
 			cmp.config.compare.order,
 		},
 	},
+})
+
+-- `/` cmdline setup.
+-- cmp.setup.cmdline("/", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sources = {
+-- 		{ name = "buffer" },
+-- 	},
+-- })
+
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd({ "CmdlineLeave", "VimEnter" }, {
+	callback = function()
+		vim.opt.pumheight = 5
+	end,
+})
+autocmd("CmdlineEnter", {
+	callback = function()
+		vim.opt.pumheight = 5
+	end,
 })

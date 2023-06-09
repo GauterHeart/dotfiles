@@ -33,6 +33,7 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.shell = "fish"
 vim.o.timeoutlen = 400
+-- vim.opt.spelllang = "ru_ru,en_us"
 
 vim.o.showtabline = 2
 -- vim.opt.cursorcolumn = true

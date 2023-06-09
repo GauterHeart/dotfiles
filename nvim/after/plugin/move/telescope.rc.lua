@@ -48,6 +48,10 @@ local picker_buffer = theme.get_dropdown(picker_style({
 	},
 }))
 
+local fd_picker = theme.get_dropdown(
+	picker_style({ previewer = false, find_command = { "fd", "-g", "--type", "f", "--strip-cwd-prefix", "-E", ".git", "-H" } })
+)
+
 telescope.setup({
 	defaults = {
 		-- history = {
@@ -73,7 +77,7 @@ telescope.setup({
 		},
 	},
 	pickers = {
-		find_files = picker,
+		find_files = fd_picker,
 		live_grep = picker_previewer,
 		buffers = picker_buffer,
 		current_buffer_fuzzy_find = picker,
@@ -88,20 +92,20 @@ telescope.setup({
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
-    live_grep_args = {
-      auto_quoting = true, -- enable/disable auto-quoting
-      -- define mappings, e.g.
-      mappings = { -- extend mappings
-        i = {
-          ["<C-k>"] = lga_actions.quote_prompt(),
-          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-        },
-      },
-      -- ... also accepts theme settings, for example:
-      -- theme = "dropdown", -- use dropdown theme
-      -- theme = { }, -- use own theme spec
-      -- layout_config = { mirror=true }, -- mirror preview pane
-    },
+		live_grep_args = {
+			auto_quoting = true, -- enable/disable auto-quoting
+			-- define mappings, e.g.
+			mappings = { -- extend mappings
+				i = {
+					["<C-k>"] = lga_actions.quote_prompt(),
+					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+				},
+			},
+			-- ... also accepts theme settings, for example:
+			-- theme = "dropdown", -- use dropdown theme
+			-- theme = { }, -- use own theme spec
+			-- layout_config = { mirror=true }, -- mirror preview pane
+		},
 		file_browser = {
 			theme = "dropdown",
 			hijack_netrw = false,
@@ -136,6 +140,8 @@ vim.keymap.set("n", ";f", function()
 	builtin.find_files({
 		no_ignore = false,
 		hidden = true,
+		-- search_dirs = {"directory", "directories", "files"}
+		-- follow = true
 	})
 end)
 
