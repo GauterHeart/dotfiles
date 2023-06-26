@@ -8,7 +8,7 @@ end
 
 local lspkind = require("lspkind")
 
-vim.o.completeopt = "menu,menuone,noselect"
+-- vim.o.completeopt = "menu,menuone,noselect"
 
 local function border(hl_name)
 	return {
@@ -27,8 +27,10 @@ cmp.setup({
 	experimental = { ghost_text = true },
 	window = {
 		completion = {
-			border = border("CmpBorder"),
-			winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
+			border = "rounded",
+			winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
+			-- border = border("CmpBorder"),
+			-- winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
 			-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
 			scrollbar = false,
 		},
@@ -43,8 +45,8 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-        -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+		-- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+		-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
 		["<C-c>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({
@@ -60,8 +62,11 @@ cmp.setup({
 		}),
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", max_item_count = 5, group_index = 1 },
-		{ name = "luasnip", max_item_count = 5, group_index = 1 },
+		-- { name = "nvim_lsp", max_item_count = 5, group_index = 1 },
+		-- { name = "luasnip", max_item_count = 5, group_index = 1 },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lsp", group_index = 1 },
+		{ name = "luasnip", group_index = 1 },
 		-- { name = "buffer", max_item_count = 5, group_index = 2 },
 	}),
 	formatting = {
@@ -92,15 +97,15 @@ cmp.setup({
 -- 	},
 -- })
 
-local autocmd = vim.api.nvim_create_autocmd
-
-autocmd({ "CmdlineLeave", "VimEnter" }, {
-	callback = function()
-		vim.opt.pumheight = 5
-	end,
-})
-autocmd("CmdlineEnter", {
-	callback = function()
-		vim.opt.pumheight = 5
-	end,
-})
+vim.opt.pumheight = 5
+-- local autocmd = vim.api.nvim_create_autocmd
+-- autocmd({ "CmdlineLeave", "VimEnter" }, {
+-- 	callback = function()
+-- 		vim.opt.pumheight = 5
+-- 	end,
+-- })
+-- autocmd("CmdlineEnter", {
+-- 	callback = function()
+-- 		vim.opt.pumheight = 5
+-- 	end,
+-- })

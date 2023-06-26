@@ -17,7 +17,6 @@ vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
-
 -- statusline
 vim.opt.laststatus = 3
 
@@ -50,13 +49,11 @@ vim.opt.shiftwidth = 4
 --vim.opt.expandtab = true
 
 vim.opt.breakindent = true
-
 vim.opt.wildoptions = "fuzzy"
 
--- ???
 
 -- UI
-vim.opt.guifont = { "Hack Nerd Font Mono", ":h18" }
+vim.opt.guifont = { "Hack Nerd Font Mono", ":h22" }
 -- vim.opt.guifont = { "FiraCode Nerd Font Mono", ":h16" }
 vim.g.neovide_cursor_vfx_mode = "sonicboom"
 vim.g.neovide_input_use_logo = 1

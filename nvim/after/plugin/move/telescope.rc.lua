@@ -48,9 +48,12 @@ local picker_buffer = theme.get_dropdown(picker_style({
 	},
 }))
 
-local fd_picker = theme.get_dropdown(
-	picker_style({ previewer = false, find_command = { "fd", "-g", "--type", "f", "--strip-cwd-prefix", "-E", ".git", "-H" } })
-)
+-- local fd_picker = theme.get_dropdown(
+-- 	picker_style({
+-- 		previewer = false,
+-- 		find_command = { "fd", "-g", "--type", "f", "--strip-cwd-prefix", "-E", ".git", "-H" },
+-- 	})
+-- )
 
 telescope.setup({
 	defaults = {
@@ -73,11 +76,13 @@ telescope.setup({
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
+				["<C-k>"] = require("telescope.actions").cycle_history_next,
+				["<C-l>"] = require("telescope.actions").cycle_history_prev,
 			},
 		},
 	},
 	pickers = {
-		find_files = fd_picker,
+		find_files = picker,
 		live_grep = picker_previewer,
 		buffers = picker_buffer,
 		current_buffer_fuzzy_find = picker,
@@ -98,7 +103,7 @@ telescope.setup({
 			mappings = { -- extend mappings
 				i = {
 					["<C-k>"] = lga_actions.quote_prompt(),
-					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+					-- ["<C-l>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
 				},
 			},
 			-- ... also accepts theme settings, for example:
@@ -132,7 +137,7 @@ telescope.setup({
 })
 
 telescope.load_extension("harpoon")
-telescope.load_extension("fzy_native")
+-- telescope.load_extension("fzy_native")
 telescope.load_extension("file_browser")
 telescope.load_extension("live_grep_args")
 
@@ -146,8 +151,11 @@ vim.keymap.set("n", ";f", function()
 end)
 
 vim.keymap.set("n", ";r", function()
-	-- builtin.live_grep()
 	telescope.extensions.live_grep_args.live_grep_args(picker_previewer)
+end)
+
+vim.keymap.set("n", ";j", function()
+	builtin.current_buffer_fuzzy_find()
 end)
 
 vim.keymap.set("n", ";a", function()

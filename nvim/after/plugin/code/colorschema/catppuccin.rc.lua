@@ -6,7 +6,7 @@ end
 vim.g.catppuccin_flavour = "mocha"
 catppuccin.setup({
 	transparent_background = false,
-	floating_border = "on",
+	floating_border = "off",
 	term_colors = true,
 	compile = {
 		enabled = true,
@@ -42,17 +42,18 @@ catppuccin.setup({
 				warnings = { "underline" },
 				information = { "underline" },
 			},
+			inlay_hints = {
+				background = true,
+			},
 		},
 		cmp = true,
 		hop = true,
 		telescope = true,
 		harpoon = true,
-		neotree = { enabled = true, show_root = false, border = false },
+		-- neotree = { enabled = true, show_root = false, border = false },
 		mason = true,
-		noice = true,
 		notify = true,
+		gitsigns = true,
+		telekasten = true,
 	},
 })
--- vim.cmd([[colorscheme catppuccin]])
--- vim.cmd.colorscheme("catppuccin")
--- vim.cmd [[color catppuccin]]

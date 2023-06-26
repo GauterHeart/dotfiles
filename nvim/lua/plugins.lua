@@ -44,6 +44,7 @@ lazy.setup({
 	"lukas-reineke/cmp-under-comparator",
 	"hrsh7th/cmp-buffer", -- nvim-cmp source for buffer words
 	"hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim's built-in LSP
+	"hrsh7th/cmp-nvim-lsp-signature-help",
 
 	-- Fzf
 	"nvim-telescope/telescope.nvim",
@@ -68,6 +69,7 @@ lazy.setup({
 		"nvim-treesitter/nvim-treesitter",
 		cmd = "TSUpdate",
 	},
+	"nvim-treesitter/nvim-treesitter-textobjects",
 	"windwp/nvim-autopairs",
 	"lukas-reineke/indent-blankline.nvim",
 	"numToStr/Comment.nvim",
@@ -84,8 +86,15 @@ lazy.setup({
 	"nvim-tree/nvim-web-devicons",
 
 	-- Theme
-	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "rose-pine/neovim", name = "rose-pine" },
-	{"rebelot/kanagawa.nvim", name = "kanagawa"},
-	{ "EdenEast/nightfox.nvim", name = "nightfox" }
+	{ "rebelot/kanagawa.nvim", name = "kanagawa" },
+	{ "EdenEast/nightfox.nvim", name = "nightfox" },
+
+	-- Note
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	build = ":Neorg sync-parsers",
+	-- },
+	-- "nvim-neorg/neorg-telescope",
 })
