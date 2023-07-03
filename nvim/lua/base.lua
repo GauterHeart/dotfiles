@@ -51,7 +51,6 @@ vim.opt.shiftwidth = 4
 vim.opt.breakindent = true
 vim.opt.wildoptions = "fuzzy"
 
-
 -- UI
 vim.opt.guifont = { "Hack Nerd Font Mono", ":h22" }
 -- vim.opt.guifont = { "FiraCode Nerd Font Mono", ":h16" }

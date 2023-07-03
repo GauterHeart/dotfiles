@@ -13,6 +13,6 @@ vim.keymap.set("", "f", function()
 	hop.hint_char1({ current_line_only = true })
 end, { remap = true })
 
-vim.keymap.set("", "<Tab><Space>", function()
+vim.keymap.set("", "<leader><Space>", function()
 	hop.hint_patterns()
 end, { remap = true })

@@ -52,7 +52,6 @@ lazy.setup({
 	"nvim-telescope/telescope-file-browser.nvim",
 	"nvim-telescope/telescope-live-grep-args.nvim",
 	"TC72/telescope-tele-tabby.nvim",
-	{ "renerocksai/telekasten.nvim", commit = "67c5758a13352d6dcfdf9353283956c34ca06d3b" },
 
 	-- Terminal
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
@@ -92,9 +91,5 @@ lazy.setup({
 	{ "EdenEast/nightfox.nvim", name = "nightfox" },
 
 	-- Note
-	-- {
-	-- 	"nvim-neorg/neorg",
-	-- 	build = ":Neorg sync-parsers",
-	-- },
-	-- "nvim-neorg/neorg-telescope",
+	{ "renerocksai/telekasten.nvim" },
 })

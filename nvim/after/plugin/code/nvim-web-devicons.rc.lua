@@ -4,6 +4,11 @@ if not status then
 end
 
 icons.setup({
-	override = {},
+	override = {
+		norg = {
+			icon = "󰎛",
+			name = "Neorg",
+		},
+	},
 	default = true,
 })

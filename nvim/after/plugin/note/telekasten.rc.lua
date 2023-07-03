@@ -4,7 +4,7 @@ if not status then
 end
 
 telekasten.setup({
-	home = vim.fn.expand("~/Heart/Notes"), -- Put the name of your notes directory here
+	home = vim.fn.expand("~/Heart/Note"), -- Put the name of your notes directory here
 	command_palette_theme = "dropdown",
 })
 

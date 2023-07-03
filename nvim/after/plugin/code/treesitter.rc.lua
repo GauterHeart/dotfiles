@@ -17,6 +17,7 @@ ts.setup({
 	indent = {
 		enable = true,
 		-- disable = { "python", "yaml" },
+		-- disable = { "norg" },
 	},
 	ensure_installed = {
 		"tsx",

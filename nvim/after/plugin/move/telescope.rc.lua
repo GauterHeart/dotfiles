@@ -6,8 +6,18 @@ local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local theme = require("telescope.themes")
 local lga_actions = require("telescope-live-grep-args.actions")
+local fb_actions = require("telescope").extensions.file_browser.actions
+
 local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
+end
+
+function table.shallow_copy(t)
+	local t2 = {}
+	for k, v in pairs(t) do
+		t2[k] = v
+	end
+	return t2
 end
 
 local function picker_style(etc)
@@ -34,8 +44,28 @@ local function picker_style(etc)
 	return config
 end
 
+local base_file_ignore = {
+	"node_modules/.*",
+	"venv/.*",
+	"__pycache__/.*",
+	".git/.*",
+	"client/.*",
+	"data/.*",
+	"dist/.*",
+	"%.png",
+	"%.gif",
+}
+
+local standart_picker_file_ignore = table.shallow_copy(base_file_ignore)
+table.insert(standart_picker_file_ignore, "__init__.py")
+
 local picker = theme.get_dropdown(picker_style({ previewer = false }))
 local picker_previewer = theme.get_dropdown(picker_style({ preview_title = "", previewer = true }))
+local picker_previewer_rg = theme.get_dropdown(picker_style({
+	preview_title = "",
+	previewer = true,
+	file_ignore_patterns = base_file_ignore,
+}))
 local picker_buffer = theme.get_dropdown(picker_style({
 	previewer = false,
 	mappings = {
@@ -61,23 +91,19 @@ telescope.setup({
 		-- 	path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
 		-- 	limit = 100,
 		-- },
-		file_ignore_patterns = {
-			"node_modules/.*",
-			"venv/.*",
-			"__pycache__/.*",
-			".git/.*",
-			"client/.*",
-			"data/.*",
-			"dist/.*",
-			"%.png",
-			"__init__.py",
-			"%.gif",
-		},
+		file_ignore_patterns = standart_picker_file_ignore,
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
-				["<C-k>"] = require("telescope.actions").cycle_history_next,
-				["<C-l>"] = require("telescope.actions").cycle_history_prev,
+				-- ["<C-k>"] = require("telescope.actions").cycle_history_next,
+				-- ["<C-l>"] = require("telescope.actions").cycle_history_prev,
+				["<C-k>"] = function(prompt_bufnr)
+					local selection = require("telescope.actions.state").get_selected_entry()
+					local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+					require("telescope.actions").close(prompt_bufnr)
+					-- Depending on what you want put `cd`, `lcd`, `tcd`
+					vim.cmd(string.format("silent lcd %s", dir))
+				end,
 			},
 		},
 	},
@@ -103,7 +129,7 @@ telescope.setup({
 			mappings = { -- extend mappings
 				i = {
 					["<C-k>"] = lga_actions.quote_prompt(),
-					-- ["<C-l>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+					["<C-l>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
 				},
 			},
 			-- ... also accepts theme settings, for example:
@@ -114,6 +140,7 @@ telescope.setup({
 		file_browser = {
 			theme = "dropdown",
 			hijack_netrw = false,
+			file_ignore_patterns = base_file_ignore,
 			mappings = {
 				i = {
 					["<C-k>"] = function(prompt_bufnr)
@@ -123,8 +150,15 @@ telescope.setup({
 						-- Depending on what you want put `cd`, `lcd`, `tcd`
 						vim.cmd(string.format("silent lcd %s", dir))
 					end,
+					["<C-a>"] = fb_actions.create,
+					["<C-d>"] = fb_actions.remove,
+					["<C-r>"] = fb_actions.rename,
 				},
-				["n"] = {},
+				["n"] = {
+					["<C-a>"] = fb_actions.create,
+					["<C-d>"] = fb_actions.remove,
+					["<C-r>"] = fb_actions.rename,
+				},
 			},
 		},
 		tele_tabby = {
@@ -151,7 +185,7 @@ vim.keymap.set("n", ";f", function()
 end)
 
 vim.keymap.set("n", ";r", function()
-	telescope.extensions.live_grep_args.live_grep_args(picker_previewer)
+	telescope.extensions.live_grep_args.live_grep_args(picker_previewer_rg)
 end)
 
 vim.keymap.set("n", ";j", function()
@@ -225,6 +259,11 @@ vim.keymap.set("n", "sf", function()
 		grouped = true,
 		previewer = false,
 		initial_mode = "insert",
+		hide_parent_dir = true,
+		use_fd = true,
+		-- select_buffer = true,
+		-- hijack_netrw = true,
+		-- collapse_dirs = true
 		-- layout_config = { height = 40 },
 	}))
 end)
