@@ -5,6 +5,10 @@ vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
+-- Ebala
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+
 -- Off swap
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -35,6 +39,7 @@ vim.o.timeoutlen = 400
 -- vim.opt.spelllang = "ru_ru,en_us"
 
 vim.o.showtabline = 2
+-- vim.o.showtabline = 0
 -- vim.opt.cursorcolumn = true
 vim.opt.list = true
 vim.opt.listchars = { eol = "↵" }

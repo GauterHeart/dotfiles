@@ -6,7 +6,7 @@ end
 
 lazy.setup({
 	defaults = {
-		lazy = false, -- should plugins be lazy-loaded?
+		lazy = true, -- should plugins be lazy-loaded?
 	},
 	performance = {
 		cache = {
@@ -56,12 +56,12 @@ lazy.setup({
 	-- Terminal
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
+	-- File browser
+
 	-- Git
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
-
-	-- File explorer
-	"nvim-neo-tree/neo-tree.nvim",
+	"sindrets/diffview.nvim",
 
 	-- Code
 	{
@@ -70,7 +70,22 @@ lazy.setup({
 	},
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	"windwp/nvim-autopairs",
-	"lukas-reineke/indent-blankline.nvim",
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			scope = {
+				show_start = false,
+				include = {
+					node_type = { "*" },
+				},
+				enabled = false,
+			},
+			-- indent = {
+			-- 	char = "│",
+			-- },
+		},
+	},
 	"numToStr/Comment.nvim",
 	"nanozuki/tabby.nvim",
 
@@ -79,16 +94,12 @@ lazy.setup({
 	"phaazon/hop.nvim",
 	"ThePrimeagen/harpoon",
 	"rcarriga/nvim-notify",
-	-- "folke/noice.nvim",
 
 	-- Icons
 	"nvim-tree/nvim-web-devicons",
 
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "rose-pine/neovim", name = "rose-pine" },
-	{ "rebelot/kanagawa.nvim", name = "kanagawa" },
-	{ "EdenEast/nightfox.nvim", name = "nightfox" },
 
 	-- Note
 	{ "renerocksai/telekasten.nvim" },

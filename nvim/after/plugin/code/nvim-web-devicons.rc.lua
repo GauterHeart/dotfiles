@@ -9,6 +9,10 @@ icons.setup({
 			icon = "󰎛",
 			name = "Neorg",
 		},
+		proto = {
+			icon = "󱍢",
+			name = "Protobuf",
+		},
 	},
 	default = true,
 })

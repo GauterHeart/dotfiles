@@ -6,7 +6,7 @@ end
 ts.setup({
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = false,
+		additional_vim_regex_highlighting = true,
 		use_languagetree = true,
 		disable = {},
 		-- custom_captures = {

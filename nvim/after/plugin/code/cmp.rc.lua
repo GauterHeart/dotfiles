@@ -24,7 +24,7 @@ local function border(hl_name)
 end
 
 cmp.setup({
-	experimental = { ghost_text = true },
+	-- experimental = { ghost_text = true },
 	window = {
 		completion = {
 			border = "rounded",
@@ -62,27 +62,50 @@ cmp.setup({
 		}),
 	}),
 	sources = cmp.config.sources({
-		-- { name = "nvim_lsp", max_item_count = 5, group_index = 1 },
-		-- { name = "luasnip", max_item_count = 5, group_index = 1 },
-		{ name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lsp", group_index = 1 },
-		{ name = "luasnip", group_index = 1 },
-		-- { name = "buffer", max_item_count = 5, group_index = 2 },
+		{ name = "nvim_lsp_signature_help", group_index = 1 },
+		-- { name = "buffer", group_index = 3 },
+		{ name = "luasnip", group_index = 3 },
 	}),
 	formatting = {
-		format = lspkind.cmp_format({ with_text = false, maxwidth = 25 }),
+		format = lspkind.cmp_format({
+			with_text = false,
+			maxwidth = 25,
+			-- menu = { -- show which source that completion item came from
+			-- 	buffer = "[buf]",
+			-- 	nvim_lsp = "[LSP]",
+			-- 	nvim_lua = "[api]",
+			-- 	path = "[path]",
+			-- 	luasnip = "[snip]",
+			-- 	cmdline = "[cmd]",
+			-- },
+		}),
 	},
 	completion = {
-		-- autocomplete = false,
+		autocomplete = false,
 	},
+	-- sorting = {
+	-- 	comparators = {
+	-- 		cmp.config.compare.offset,
+	-- 		cmp.config.compare.exact,
+	-- 		cmp.config.compare.score,
+	-- 		require("cmp-under-comparator").under,
+	-- 		cmp.config.compare.kind,
+	-- 		cmp.config.compare.sort_text,
+	-- 		cmp.config.compare.length,
+	-- 		cmp.config.compare.order,
+	-- 	},
+	-- },
 	sorting = {
 		comparators = {
+			require("cmp-under-comparator").under,
+			cmp.config.compare.sort_text,
 			cmp.config.compare.offset,
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
-			require("cmp-under-comparator").under,
+			-- cmp.config.compare.recently_used,
+			-- cmp.config.compare.locality,
 			cmp.config.compare.kind,
-			cmp.config.compare.sort_text,
 			cmp.config.compare.length,
 			cmp.config.compare.order,
 		},

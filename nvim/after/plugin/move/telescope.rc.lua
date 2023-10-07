@@ -109,6 +109,8 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = picker,
+		quickfix = picker,
+		quickfixhistory = picker,
 		live_grep = picker_previewer,
 		buffers = picker_buffer,
 		current_buffer_fuzzy_find = picker,
@@ -151,12 +153,12 @@ telescope.setup({
 						vim.cmd(string.format("silent lcd %s", dir))
 					end,
 					["<C-a>"] = fb_actions.create,
-					["<C-d>"] = fb_actions.remove,
+					-- ["<C-d>"] = fb_actions.remove,
 					["<C-r>"] = fb_actions.rename,
 				},
 				["n"] = {
 					["<C-a>"] = fb_actions.create,
-					["<C-d>"] = fb_actions.remove,
+					-- ["<C-d>"] = fb_actions.remove,
 					["<C-r>"] = fb_actions.rename,
 				},
 			},
@@ -277,5 +279,13 @@ vim.keymap.set("n", ";;", function()
 end)
 
 vim.keymap.set("n", "<F1>", function()
-	builtin.resume()
+	builtin.resume({ initial_mode = "normal" })
+end)
+
+vim.keymap.set("n", ";q", function()
+	builtin.quickfix()
+end)
+
+vim.keymap.set("n", ";m", function()
+	builtin.quickfixhistory()
 end)

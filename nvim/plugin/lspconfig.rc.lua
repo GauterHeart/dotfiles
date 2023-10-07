@@ -56,9 +56,20 @@ vim.o.updatetime = 0
 
 -- The main servers
 
+local root_files = {
+	"pyproject.toml",
+	"setup.py",
+	"setup.cfg",
+	"requirements.txt",
+	"Pipfile",
+	"pyrightconfig.json",
+	".git",
+}
+
 nvim_lsp.pyright.setup({
 	-- on_attach = on_attach,
 	-- 	capabilities = capabilities,
+	root_dir = util.root_pattern(unpack(root_files)),
 	filetypes = { "python" },
 	single_file_support = true,
 	cmd = { "pyright-langserver", "--stdio" },
@@ -69,6 +80,7 @@ nvim_lsp.pyright.setup({
 				diagnosticMode = "workspace",
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "on",
+				-- typeCheckingMode = "off",
 				-- reportUnusedVariable = "off",
 			},
 		},
@@ -76,7 +88,8 @@ nvim_lsp.pyright.setup({
 })
 
 -- nvim_lsp.ruff_lsp.setup({
--- 	on_attach = on_attach,
+-- 	-- on_attach = on_attach,
+-- 	root_dir = util.root_pattern(unpack(root_files)),
 -- 	filetypes = { "python" },
 -- 	single_file_support = true,
 -- 	cmd = { "ruff-lsp" },
@@ -156,3 +169,5 @@ nvim_lsp.marksman.setup({
 	single_file_support = true,
 	root_dir = util.root_pattern(".git", ".marksman.toml"),
 })
+
+nvim_lsp.bufls.setup({})
