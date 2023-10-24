@@ -58,6 +58,7 @@ vim.opt.wildoptions = "fuzzy"
 
 -- UI
 vim.opt.guifont = { "Hack Nerd Font Mono", ":h22" }
+-- vim.opt.guifont = { "Hack Nerd Font Mono", ":h18" }
 -- vim.opt.guifont = { "FiraCode Nerd Font Mono", ":h16" }
 vim.g.neovide_cursor_vfx_mode = "sonicboom"
 vim.g.neovide_input_use_logo = 1

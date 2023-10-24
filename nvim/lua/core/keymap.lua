@@ -49,6 +49,7 @@ vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true 
 
 keymap.set("", "q", "<Nop>")
 keymap.set("", "s", "<Nop>")
+keymap.set("", "r", "<Nop>")
 keymap.set("i", "<F1>", "<Nop>")
 keymap.set("i", "<F2>", "<Nop>")
 keymap.set("i", "<F3>", "<Nop>")
