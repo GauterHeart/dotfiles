@@ -3,7 +3,6 @@ return {
 
 		"nvim-telescope/telescope-file-browser.nvim",
 	},
-	{ "ThePrimeagen/harpoon" },
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.3",
@@ -64,7 +63,18 @@ return {
 				"venv/.*",
 				"__pycache__/.*",
 				".git/.*",
-				"client/.*",
+				"vendor",
+				-- "client/.*",
+				"data/.*",
+				"dist/.*",
+				"%.png",
+				"%.gif",
+			}
+			local without_pkg_ignore = {
+				"__pycache__/.*",
+				".git/.*",
+				"vendor",
+				-- "client/.*",
 				"data/.*",
 				"dist/.*",
 				"%.png",
@@ -75,6 +85,11 @@ return {
 			table.insert(standart_picker_file_ignore, "__init__.py")
 
 			local picker = theme.get_dropdown(picker_style({ previewer = false }))
+			local harpoon_picker =
+				theme.get_dropdown(picker_style({ previewer = false, file_ignore_patterns = base_file_ignore }))
+			local without_package_ignore_picker =
+				theme.get_dropdown(picker_style({ previewer = false, file_ignore_patterns = without_pkg_ignore }))
+
 			local picker_previewer = theme.get_dropdown(picker_style({ preview_title = "", previewer = true }))
 			local picker_previewer_rg = theme.get_dropdown(picker_style({
 				preview_title = "",
@@ -129,7 +144,7 @@ return {
 					live_grep = picker_previewer,
 					buffers = picker_buffer,
 					current_buffer_fuzzy_find = picker,
-					diagnostics = picker,
+					diagnostics = picker_previewer_rg,
 					lsp_references = picker_previewer,
 					treesitter = picker_previewer,
 					git_branches = picker,
@@ -178,9 +193,6 @@ return {
 								["<C-r>"] = fb_actions.rename,
 							},
 						},
-					},
-					tele_tabby = {
-						use_highlighter = true,
 					},
 					frecency = {
 						theme = "dropdown",
@@ -256,7 +268,7 @@ return {
 			end)
 
 			vim.keymap.set("n", ";d", function()
-				builtin.lsp_references()
+				builtin.lsp_references(picker_previewer_rg)
 			end)
 
 			vim.keymap.set("n", ";gb", function()
@@ -277,6 +289,7 @@ return {
 					cwd = telescope_buffer_dir(),
 					respect_gitignore = true,
 					git_status = false,
+					create_from_prompt = false,
 					hidden = true,
 					grouped = true,
 					previewer = false,
@@ -290,13 +303,12 @@ return {
 				}))
 			end)
 
-			vim.keymap.set("n", ";t", function()
-				telescope.extensions.tele_tabby.list(picker)
-			end)
-
 			vim.keymap.set("n", ";;", function()
-				telescope.extensions.harpoon.marks(picker)
+				telescope.extensions.harpoon.marks(harpoon_picker)
 			end)
+			-- vim.keymap.set("n", "<C-e>", function()
+			-- 	telescope.extensions.harpoon.marks(harpoon_picker)
+			-- end)
 
 			vim.keymap.set("n", "<F1>", function()
 				builtin.resume({ initial_mode = "normal" })

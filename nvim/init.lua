@@ -23,3 +23,6 @@ require("core.keymap")
 lazy.setup("plugin")
 
 require("core.code")
+
+
+vim.keymap.set({ "n" }, "<C-l>", "<cmd>noh<CR>")
