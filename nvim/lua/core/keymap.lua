@@ -25,18 +25,27 @@ keymap.set("n", "x", '"_ca')
 -- Split window
 keymap.set("n", "ss", "<cmd>split<Return><C-w>w")
 keymap.set("n", "sv", "<cmd>vsplit<Return><C-w>w")
--- Move window
-keymap.set("n", "s<Space>", "<C-w>w")
-keymap.set("", "sh", "<C-w>h")
-keymap.set("", "sk", "<C-w>k")
-keymap.set("", "sj", "<C-w>j")
-keymap.set("", "sl", "<C-w>l")
 
 -- Tab
 keymap.set("n", "tt", "<cmd>tabnew<CR>")
 keymap.set("n", "ts", "<cmd>tab split<CR>")
 keymap.set("n", "tn", "<cmd>tabnext<CR>")
 keymap.set("n", "tb", "<cmd>tabprev<CR>")
+keymap.set("", "<BS>", "<Nop>")
+keymap.set("n", "<BS>k", "<cmd>tabnext<CR>")
+keymap.set("n", "<BS>j", "<cmd>tabprev<CR>")
+
+
+
+keymap.set("n", "t1", "<cmd>tabn 1<CR>")
+keymap.set("n", "t2", "<cmd>tabn 2<CR>")
+keymap.set("n", "t3", "<cmd>tabn 3<CR>")
+keymap.set("n", "t4", "<cmd>tabn 4<CR>")
+keymap.set("n", "t5", "<cmd>tabn 5<CR>")
+keymap.set("n", "t6", "<cmd>tabn 6<CR>")
+keymap.set("n", "t7", "<cmd>tabn 7<CR>")
+keymap.set("n", "t8", "<cmd>tabn 8<CR>")
+keymap.set("n", "t9", "<cmd>tabn 9<CR>")
 
 -- Buffer
 keymap.set("n", "qq", "<cmd>close<CR>")
@@ -83,3 +92,26 @@ vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i", "<F1>", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>,", ";", { noremap = true, silent = true })
 -- vim.keymap.set({ "n", "v" }, "<C-i>", ";", { noremap = true, silent = true })
+
+
+-- LSP
+keymap.set("n", "<leader>rl", "<cmd>lua vim.diagnostic.reset()<CR>")
+
+
+if vim.g.neovide then
+	keymap.set("n", "<F9>1", "<cmd>tabn 1<CR>")
+	keymap.set("n", "<F9>2", "<cmd>tabn 2<CR>")
+	keymap.set("n", "<F9>3", "<cmd>tabn 3<CR>")
+	keymap.set("n", "<F9>4", "<cmd>tabn 4<CR>")
+	keymap.set("n", "<F9>5", "<cmd>tabn 5<CR>")
+	keymap.set("n", "<F9>6", "<cmd>tabn 6<CR>")
+	keymap.set("n", "<F9>7", "<cmd>tabn 7<CR>")
+	keymap.set("n", "<F9>8", "<cmd>tabn 8<CR>")
+	keymap.set("n", "<F9>9", "<cmd>tabn 9<CR>")
+
+	keymap.set("n", "<F9>n", "<cmd>tabnext<CR>")
+	keymap.set("n", "<F9>b", "<cmd>tabprev<CR>")
+	keymap.set("n", "<F9>k", "<cmd>tabnext<CR>")
+	keymap.set("n", "<F9>j", "<cmd>tabprev<CR>")
+end
+

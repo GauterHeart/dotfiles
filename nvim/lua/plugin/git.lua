@@ -6,7 +6,8 @@ return {
 			vim.keymap.set("n", "<Leader>cb", ":Git checkout -b<Space>")
 		end,
 	},
-	"sindrets/diffview.nvim",
+	{ "sindrets/diffview.nvim" },
+	-- { "akinsho/git-conflict.nvim", version = "*", config = true },
 
 	{
 		"lewis6991/gitsigns.nvim",
@@ -52,10 +53,15 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "cn", ":Gitsigns blame_line<CR>")
+			vim.keymap.set("n", "rl", ":Gitsigns blame_line<CR>")
 			vim.keymap.set("n", "rn", ":Gitsigns next_hunk<CR>")
 			vim.keymap.set("n", "rb", ":Gitsigns prev_hunk<CR>")
 			vim.keymap.set("n", "rp", ":Gitsigns preview_hunk_inline<CR>")
+			vim.keymap.set("n", "rd", ":Gitsigns diffthis<CR>")
+			vim.keymap.set("n", "ra", ":Gitsigns stage_hunk<CR>")
+			vim.keymap.set("n", "rab", ":Gitsigns stage_buffer<CR>")
+			vim.keymap.set("n", "rq", ":Gitsigns reset_hunk<CR>")
+			vim.keymap.set("n", "rqa", ":Gitsigns reset_buffer<CR>")
 		end,
 	},
 }

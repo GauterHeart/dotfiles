@@ -17,6 +17,14 @@ return {
 					icon = "󱍢",
 					name = "Protobuf",
 				},
+				http = {
+					icon = "",
+					name = "Http",
+				},
+				env = {
+					icon = "󰏗",
+					name = "Env",
+				},
 			},
 			default = true,
 		})

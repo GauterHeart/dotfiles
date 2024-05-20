@@ -1,6 +1,7 @@
 return {
 
-	"phaazon/hop.nvim",
+	-- "phaazon/hop.nvim",
+	"smoka7/hop.nvim",
 	config = function()
 		local status, hop = pcall(require, "hop")
 		if not status then

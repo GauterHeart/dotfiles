@@ -9,8 +9,8 @@ return {
 			},
 			enabled = false,
 		},
-		-- indent = {
-		-- 	char = "│",
-		-- },
+		indent = {
+			char = "│",
+		},
 	},
 }

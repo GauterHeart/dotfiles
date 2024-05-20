@@ -8,6 +8,9 @@ return {
 				return
 			end
 
+			-- local highlights = require("rose-pine.plugins.toggleterm")
+			-- require("toggleterm").setup({ highlights = highlights })
+
 			toggleterm.setup({
 				open_mapping = [[<F3>]],
 				shade_terminals = true,
