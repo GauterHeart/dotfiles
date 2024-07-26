@@ -100,20 +100,49 @@ return {
 			-- 	["textDocument/publishDiagnostics"] = function() end,
 			-- },
 			settings = {
+
+				pyright = {
+					-- Using Ruff's import organizer
+					disableOrganizeImports = true,
+				},
+
 				python = {
 					analysis = {
-						autoSearchPaths = true,
+						-- autoSearchPaths = true,
+
 						-- diagnosticMode = "workspace",
-						diagnosticMode = "openFilesOnly",
-						useLibraryCodeForTypes = true,
-						typeCheckingMode = "on",
+
+						-- diagnosticMode = "openFilesOnly",
+						-- useLibraryCodeForTypes = true,
+						-- typeCheckingMode = "on",
+
 						-- typeCheckingMode = "off",
 						-- reportUnusedVariable = "off",
+
+						ignore = { "*" },
 					},
 				},
 			},
 			capabilities = lsp_capabilities,
 		})
+
+		local on_attach_ruff = function(client, bufnr)
+			if client.name == "ruff_lsp" then
+				-- Disable hover in favor of Pyright
+				client.server_capabilities.hoverProvider = false
+			end
+		end
+
+		nvim_lsp.ruff_lsp.setup({
+			on_attach = on_attach_ruff,
+			init_options = {
+				settings = {
+					-- Any extra CLI arguments for `ruff` go here.
+					args = {},
+				},
+			},
+		})
+
 		-- nvim_lsp.pylyzer.setup{}
 
 		nvim_lsp.tsserver.setup({
@@ -156,6 +185,15 @@ return {
 			on_attach = function(client, bufnr)
 				client.server_capabilities.semanticTokensProvider = nil
 			end,
+		})
+		nvim_lsp.rust_analyzer.setup({
+			settings = {
+				["rust-analyzer"] = {
+					diagnostics = {
+						enable = false,
+					},
+				},
+			},
 		})
 
 		-- Utils LSP

@@ -2,108 +2,63 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		config = function()
-			local status, catppuccin = pcall(require, "catppuccin")
-			if not status then
-				return
-			end
-
-			vim.g.catppuccin_flavour = "mocha"
-			catppuccin.setup({
-				transparent_background = false,
-				floating_border = "off",
-				term_colors = true,
-				compile = {
-					enabled = true,
-					path = vim.fn.stdpath("cache") .. "/catppuccin",
-				},
-				styles = {
-					comments = { "italic" },
-					properties = {},
-					functions = { "bold" },
-					keywords = {},
-					operators = { "bold" },
-					conditionals = { "bold" },
-					loops = { "bold" },
-					booleans = { "bold" },
-					numbers = {},
-					types = {},
-					strings = {},
-					variables = {},
-				},
-				integrations = {
-					treesitter = true,
-					native_lsp = {
-						enabled = true,
-						virtual_text = {
-							errors = { "italic" },
-							hints = { "italic" },
-							warnings = { "italic" },
-							information = { "italic" },
-						},
-						underlines = {
-							errors = { "underline" },
-							hints = { "underline" },
-							warnings = { "underline" },
-							information = { "underline" },
-						},
-						inlay_hints = {
-							background = true,
-						},
-					},
-					cmp = true,
-					hop = true,
-					telescope = true,
-					harpoon = true,
-					-- neotree = { enabled = true, show_root = false, border = false },
-					mason = true,
-					notify = true,
-					gitsigns = true,
-					telekasten = true,
-				},
-			})
-		end,
-	},
-	{
-		"zootedb0t/citruszest.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function()
-			require("citruszest").setup({
-				option = {
-					transparent = false, -- Enable/Disable transparency
-					bold = true,
-					italic = false,
+		opts = {
+			term_colors = true,
+			transparent_background = false,
+			styles = {
+				comments = {},
+				conditionals = {},
+				loops = {},
+				functions = {},
+				keywords = {},
+				strings = {},
+				variables = {},
+				numbers = {},
+				booleans = {},
+				properties = {},
+				types = {},
+			},
+			color_overrides = {
+				mocha = {
+					base = "#000000",
+					mantle = "#000000",
+					-- crust = "#000000",
+					crust = "#FFFFFF",
 				},
-				-- Override default highlight style in this table
-				-- E.g If you want to override `Constant` highlight style
-				style = {
-					-- This will change Constant foreground color and make it bold.
-					Constant = { fg = "#FFFFFF", bold = true },
+			},
+			integrations = {
+				treesitter = true,
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+					},
+					underlines = {
+						errors = { "underline" },
+						hints = { "underline" },
+						warnings = { "underline" },
+						information = { "underline" },
+					},
+					inlay_hints = {
+						background = true,
+					},
 				},
-			})
-		end,
-	},
-	{
-		"samharju/synthweave.nvim",
-		commit = "8e39d7a2d287fa01a8093afaa5da3f4554517d70",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000,
-		config = function()
-			local synthweave = require("synthweave")
-			synthweave.setup({
-				transparent = false,
-				overrides = {
-					-- override any group
-					Identifier = { fg = "#f22f52", italic = false },
-				},
-				palette = {
-					-- override palette colors, take a peek at synthweave/palette.lua
-					-- bg0 = "#040404",
-				},
-			})
-			synthweave.load()
-		end,
+				cmp = true,
+				hop = true,
+				telescope = true,
+				harpoon = true,
+				-- neotree = { enabled = true, show_root = false, border = false },
+				mason = true,
+				notify = true,
+				gitsigns = true,
+				telekasten = true,
+			},
+		},
 	},
 	{
 		"folke/tokyonight.nvim",
@@ -147,5 +102,37 @@ return {
 				on_highlights = function(highlights, colors) end,
 			})
 		end,
+	},
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			-- Enable transparent background
+			transparent = true,
+
+			-- Enable italics comments
+			italic_comments = false,
+
+			-- Replace all fillchars with ' ' for the ultimate clean look
+			hide_fillchars = true,
+
+			-- Modern borderless telescope theme
+			borderless_telescope = true,
+
+			-- Set terminal colors used in `:terminal`
+			terminal_colors = true,
+
+			theme = {
+				variant = "default",
+				highlights = {
+					Comment = { fg = "#696969", bg = "NONE", italic = true },
+					DiagnosticUnderlineError = { undercurl = true, sp = "#d11500" },
+					DiagnosticUnderlineWarn = { undercurl = false, sp = "#997b00" },
+					DiagnosticUnderlineInfo = { undercurl = false, sp = "#0057d1" },
+					DiagnosticUnderlineHint = { undercurl = false, sp = "#008c99" },
+				},
+			},
+		},
 	},
 }

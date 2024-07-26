@@ -150,6 +150,7 @@ return {
 					git_branches = picker,
 					git_commits = picker,
 					git_status = picker,
+					lsp_document_symbols = picker,
 				},
 				extensions = {
 					fzy_native = {
@@ -243,27 +244,43 @@ return {
 				builtin.treesitter()
 			end)
 
-			vim.keymap.set("n", ";v", function()
-				builtin.treesitter({
-					symbol_highlights = { "var" },
+			-- vim.keymap.set("n", ";v", function()
+			-- 	builtin.treesitter({
+			-- 		symbol_highlights = { "var" },
+			-- 	})
+			-- end)
+			--
+			-- vim.keymap.set("n", ";b", function()
+			-- 	builtin.treesitter({
+			-- 		symbols = { "type" },
+			-- 	})
+			-- end)
+			--
+			-- vim.keymap.set("n", ";c", function()
+			-- 	builtin.treesitter({
+			-- 		symbols = { "function" },
+			-- 	})
+			-- end)
+			--
+			-- vim.keymap.set("n", ";n", function()
+			-- 	builtin.treesitter({
+			-- 		symbols = { "field" },
+			-- 	})
+			-- end)
+
+			vim.keymap.set("n", ";q", function()
+				builtin.lsp_document_symbols({})
+			end)
+
+			vim.keymap.set("n", ";<C-a>", function()
+				builtin.lsp_document_symbols({
+					symbols = { "method", "function" },
 				})
 			end)
 
-			vim.keymap.set("n", ";b", function()
-				builtin.treesitter({
-					symbols = { "type" },
-				})
-			end)
-
-			vim.keymap.set("n", ";c", function()
-				builtin.treesitter({
-					symbols = { "function" },
-				})
-			end)
-
-			vim.keymap.set("n", ";n", function()
-				builtin.treesitter({
-					symbols = { "field" },
+			vim.keymap.set("n", ";<C-s>", function()
+				builtin.lsp_document_symbols({
+					symbols = { "class" },
 				})
 			end)
 
@@ -314,11 +331,11 @@ return {
 				builtin.resume({ initial_mode = "normal" })
 			end)
 
-			vim.keymap.set("n", ";q", function()
+			vim.keymap.set("n", ";<C-q>", function()
 				builtin.quickfix()
 			end)
 
-			vim.keymap.set("n", ";m", function()
+			vim.keymap.set("n", ";<C-m>", function()
 				builtin.quickfixhistory()
 			end)
 		end,

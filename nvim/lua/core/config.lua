@@ -54,7 +54,9 @@ vim.opt.wildoptions = "fuzzy"
 vim.opt.iskeyword = { "@", "48-57", "192-255" }
 
 -- UI
-vim.o.guifont = "Source Code Pro:h20"
+-- vim.o.guifont = "Source Code Pro:h20"
+vim.o.guifont = "Hack Nerd Font Mono:h20"
+-- vim.o.guifont = "Hack Nerd Font Mono:h18"
 -- vim.g.neovide_cursor_vfx_mode = "ripple"
 -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
 -- vim.g.neovide_cursor_animate_in_insert_mode = true
@@ -67,3 +69,4 @@ vim.g.neovide_hide_mouse_when_typing = 1
 
 vim.g.neovide_refresh_rate = 144
 vim.g.neovide_input_macos_option_key_is_meta = true
+-- vim.g.neovide_transparency = 0.8

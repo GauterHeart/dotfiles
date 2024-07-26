@@ -12,6 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 -- Use a protected call so we don't error out on first use
 local ok, lazy = pcall(require, "lazy")
 if not ok then
