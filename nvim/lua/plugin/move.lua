@@ -1,7 +1,7 @@
 return {
 	{
-
 		"smoka7/hop.nvim",
+		commit = "8f51ef02700bb3cdcce94e92eff16170a6343c4f",
 		config = function()
 			local status, hop = pcall(require, "hop")
 			if not status then

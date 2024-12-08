@@ -36,6 +36,7 @@ return {
 				},
 				indent = {
 					enable = true,
+					disable = { "sql" },
 					-- disable = { "python", "yaml" },
 					-- disable = { "norg" },
 				},

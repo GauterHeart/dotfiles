@@ -38,6 +38,8 @@ vim.opt.shell = "fish"
 vim.o.timeoutlen = 400
 
 vim.o.showtabline = 2
+vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
+
 vim.opt.list = true
 vim.opt.listchars = { eol = "↵" }
 vim.cmd("set listchars+=tab:\\ \\ ")
@@ -54,16 +56,29 @@ vim.opt.wildoptions = "fuzzy"
 vim.opt.iskeyword = { "@", "48-57", "192-255" }
 
 -- UI
-vim.o.guifont = "Source Code Pro:h20"
--- vim.g.neovide_cursor_vfx_mode = "ripple"
--- vim.g.neovide_cursor_vfx_mode = "sonicboom"
--- vim.g.neovide_cursor_animate_in_insert_mode = true
-vim.g.neovide_cursor_vfx_mode = ""
-vim.g.neovide_cursor_animation_length = 0
-vim.g.neovide_cursor_trail_size = 0
+-- vim.o.guifont = "Source Code Pro:h20"
+-- vim.o.guifont = "Hack Nerd Font Mono:h20"
+-- vim.o.guifont = "AnonymicePro Nerd Font Mono:h21"
+-- vim.o.guifont = "Agave Nerd Font Mono:h21"
+-- vim.o.guifont = "Hasklug Nerd Font Mono:h21"
+vim.o.guifont = "Hasklug Nerd Font Mono:h20"
+
+vim.g.neovide_cursor_vfx_mode = "ripple"
+vim.g.neovide_cursor_vfx_mode = "sonicboom"
+vim.g.neovide_cursor_animate_in_insert_mode = true
+
+-- vim.g.neovide_cursor_vfx_mode = ""
+-- vim.g.neovide_cursor_animation_length = 0
+-- vim.g.neovide_cursor_trail_size = 0
 
 vim.g.neovide_input_use_logo = 1
 vim.g.neovide_hide_mouse_when_typing = 1
 
 vim.g.neovide_refresh_rate = 144
 vim.g.neovide_input_macos_option_key_is_meta = true
+-- vim.g.neovide_transparency = 0.8
+
+-- vim.fn.pumvisible = true
+--
+vim.opt.pumblend = 10
+vim.opt.pumheight = 10

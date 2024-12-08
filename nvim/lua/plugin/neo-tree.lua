@@ -193,10 +193,13 @@ return {
 				filtered_items = {
 					visible = false, -- when true, they will just be displayed differently than normal items
 					hide_dotfiles = true,
+					show_hidden_count = false,
 					hide_gitignored = true,
 					hide_hidden = true, -- only works on Windows for hidden files/directories
 					hide_by_name = {
 						--"node_modules"
+						"vendor",
+						"__init__.py",
 					},
 					hide_by_pattern = { -- uses glob style patterns
 						--"*.meta",
@@ -214,7 +217,7 @@ return {
 					},
 				},
 				follow_current_file = {
-					enabled = false, -- This will find and focus the file in the active buffer every time
+					enabled = true, -- This will find and focus the file in the active buffer every time
 					--               -- the current file is changed while the tree is open.
 					leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 				},
@@ -306,6 +309,8 @@ return {
 
 		-- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 		-- vim.cmd([[nnoremap <F6> :Neotree float reveal<CR>]])
-		vim.cmd([[nnoremap <F6> :Neotree right reveal<CR>]])
+		-- vim.cmd([[nnoremap <F6> :Neotree right reveal<CR>]])
+		-- vim.cmd([[nnoremap <F6> :Neotree float reveal<CR>]])
+		vim.cmd([[nnoremap se :Neotree float reveal<CR>]])
 	end,
 }

@@ -5,7 +5,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.3",
+		tag = "0.1.8",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-fzy-native.nvim",
@@ -150,12 +150,14 @@ return {
 					git_branches = picker,
 					git_commits = picker,
 					git_status = picker,
+					lsp_document_symbols = picker,
 				},
 				extensions = {
-					fzy_native = {
-						override_generic_sorter = false,
-						override_file_sorter = true,
-					},
+					-- fzy_native = {
+					-- 	-- override_generic_sorter = false,
+					-- 	override_generic_sorter = true,
+					-- 	override_file_sorter = true,
+					-- },
 					live_grep_args = {
 						auto_quoting = true, -- enable/disable auto-quoting
 						-- define mappings, e.g.
@@ -205,6 +207,8 @@ return {
 			telescope.load_extension("file_browser")
 			telescope.load_extension("live_grep_args")
 
+			-- telescope.load_extension("completion")
+
 			vim.keymap.set("n", ";f", function()
 				builtin.find_files({
 					no_ignore = false,
@@ -243,27 +247,43 @@ return {
 				builtin.treesitter()
 			end)
 
-			vim.keymap.set("n", ";v", function()
-				builtin.treesitter({
-					symbol_highlights = { "var" },
+			-- vim.keymap.set("n", ";v", function()
+			-- 	builtin.treesitter({
+			-- 		symbol_highlights = { "var" },
+			-- 	})
+			-- end)
+			--
+			-- vim.keymap.set("n", ";b", function()
+			-- 	builtin.treesitter({
+			-- 		symbols = { "type" },
+			-- 	})
+			-- end)
+			--
+			-- vim.keymap.set("n", ";c", function()
+			-- 	builtin.treesitter({
+			-- 		symbols = { "function" },
+			-- 	})
+			-- end)
+			--
+			-- vim.keymap.set("n", ";n", function()
+			-- 	builtin.treesitter({
+			-- 		symbols = { "field" },
+			-- 	})
+			-- end)
+
+			vim.keymap.set("n", ";q", function()
+				builtin.lsp_document_symbols({})
+			end)
+
+			vim.keymap.set("n", ";<C-a>", function()
+				builtin.lsp_document_symbols({
+					symbols = { "method", "function" },
 				})
 			end)
 
-			vim.keymap.set("n", ";b", function()
-				builtin.treesitter({
-					symbols = { "type" },
-				})
-			end)
-
-			vim.keymap.set("n", ";c", function()
-				builtin.treesitter({
-					symbols = { "function" },
-				})
-			end)
-
-			vim.keymap.set("n", ";n", function()
-				builtin.treesitter({
-					symbols = { "field" },
+			vim.keymap.set("n", ";<C-s>", function()
+				builtin.lsp_document_symbols({
+					symbols = { "class" },
 				})
 			end)
 
@@ -314,11 +334,11 @@ return {
 				builtin.resume({ initial_mode = "normal" })
 			end)
 
-			vim.keymap.set("n", ";q", function()
+			vim.keymap.set("n", ";<C-q>", function()
 				builtin.quickfix()
 			end)
 
-			vim.keymap.set("n", ";m", function()
+			vim.keymap.set("n", ";<C-m>", function()
 				builtin.quickfixhistory()
 			end)
 		end,

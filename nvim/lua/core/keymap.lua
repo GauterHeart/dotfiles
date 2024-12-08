@@ -93,20 +93,22 @@ vim.keymap.set({ "n", "v" }, "<leader>,", ";", { noremap = true, silent = true }
 
 -- LSP
 keymap.set("n", "<leader>rl", "<cmd>lua vim.diagnostic.reset()<CR>")
+keymap.set("n", "<A>1", "<cmd>tabn 1<CR>")
 
-if vim.g.neovide then
-	keymap.set("n", "<F9>1", "<cmd>tabn 1<CR>")
-	keymap.set("n", "<F9>2", "<cmd>tabn 2<CR>")
-	keymap.set("n", "<F9>3", "<cmd>tabn 3<CR>")
-	keymap.set("n", "<F9>4", "<cmd>tabn 4<CR>")
-	keymap.set("n", "<F9>5", "<cmd>tabn 5<CR>")
-	keymap.set("n", "<F9>6", "<cmd>tabn 6<CR>")
-	keymap.set("n", "<F9>7", "<cmd>tabn 7<CR>")
-	keymap.set("n", "<F9>8", "<cmd>tabn 8<CR>")
-	keymap.set("n", "<F9>9", "<cmd>tabn 9<CR>")
+-- if vim.g.neovide then
+keymap.set("n", "<F9>1", "<cmd>tabn 1<CR>")
+keymap.set("n", "<F9>2", "<cmd>tabn 2<CR>")
+-- keymap.set("n", "<A>2", "<cmd>tabn 2<CR>")
+keymap.set("n", "<F9>3", "<cmd>tabn 3<CR>")
+keymap.set("n", "<F9>4", "<cmd>tabn 4<CR>")
+keymap.set("n", "<F9>5", "<cmd>tabn 5<CR>")
+keymap.set("n", "<F9>6", "<cmd>tabn 6<CR>")
+keymap.set("n", "<F9>7", "<cmd>tabn 7<CR>")
+keymap.set("n", "<F9>8", "<cmd>tabn 8<CR>")
+keymap.set("n", "<F9>9", "<cmd>tabn 9<CR>")
 
-	keymap.set("n", "<F9>n", "<cmd>tabnext<CR>")
-	keymap.set("n", "<F9>b", "<cmd>tabprev<CR>")
-	keymap.set("n", "<F9>k", "<cmd>tabnext<CR>")
-	keymap.set("n", "<F9>j", "<cmd>tabprev<CR>")
-end
+keymap.set("n", "<F9>n", "<cmd>tabnext<CR>")
+keymap.set("n", "<F9>b", "<cmd>tabprev<CR>")
+keymap.set("n", "<F9>k", "<cmd>tabnext<CR>")
+keymap.set("n", "<F9>j", "<cmd>tabprev<CR>")
+-- end

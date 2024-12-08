@@ -2,108 +2,63 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		config = function()
-			local status, catppuccin = pcall(require, "catppuccin")
-			if not status then
-				return
-			end
-
-			vim.g.catppuccin_flavour = "mocha"
-			catppuccin.setup({
-				transparent_background = false,
-				floating_border = "off",
-				term_colors = true,
-				compile = {
-					enabled = true,
-					path = vim.fn.stdpath("cache") .. "/catppuccin",
-				},
-				styles = {
-					comments = { "italic" },
-					properties = {},
-					functions = { "bold" },
-					keywords = {},
-					operators = { "bold" },
-					conditionals = { "bold" },
-					loops = { "bold" },
-					booleans = { "bold" },
-					numbers = {},
-					types = {},
-					strings = {},
-					variables = {},
-				},
-				integrations = {
-					treesitter = true,
-					native_lsp = {
-						enabled = true,
-						virtual_text = {
-							errors = { "italic" },
-							hints = { "italic" },
-							warnings = { "italic" },
-							information = { "italic" },
-						},
-						underlines = {
-							errors = { "underline" },
-							hints = { "underline" },
-							warnings = { "underline" },
-							information = { "underline" },
-						},
-						inlay_hints = {
-							background = true,
-						},
-					},
-					cmp = true,
-					hop = true,
-					telescope = true,
-					harpoon = true,
-					-- neotree = { enabled = true, show_root = false, border = false },
-					mason = true,
-					notify = true,
-					gitsigns = true,
-					telekasten = true,
-				},
-			})
-		end,
-	},
-	{
-		"zootedb0t/citruszest.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function()
-			require("citruszest").setup({
-				option = {
-					transparent = false, -- Enable/Disable transparency
-					bold = true,
-					italic = false,
+		opts = {
+			term_colors = true,
+			transparent_background = false,
+			styles = {
+				comments = {},
+				conditionals = {},
+				loops = {},
+				functions = {},
+				keywords = {},
+				strings = {},
+				variables = {},
+				numbers = {},
+				booleans = {},
+				properties = {},
+				types = {},
+			},
+			color_overrides = {
+				mocha = {
+					base = "#000000",
+					mantle = "#000000",
+					-- crust = "#000000",
+					crust = "#FFFFFF",
 				},
-				-- Override default highlight style in this table
-				-- E.g If you want to override `Constant` highlight style
-				style = {
-					-- This will change Constant foreground color and make it bold.
-					Constant = { fg = "#FFFFFF", bold = true },
+			},
+			integrations = {
+				treesitter = true,
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+					},
+					underlines = {
+						errors = { "underline" },
+						hints = { "underline" },
+						warnings = { "underline" },
+						information = { "underline" },
+					},
+					inlay_hints = {
+						background = true,
+					},
 				},
-			})
-		end,
-	},
-	{
-		"samharju/synthweave.nvim",
-		commit = "8e39d7a2d287fa01a8093afaa5da3f4554517d70",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000,
-		config = function()
-			local synthweave = require("synthweave")
-			synthweave.setup({
-				transparent = false,
-				overrides = {
-					-- override any group
-					Identifier = { fg = "#f22f52", italic = false },
-				},
-				palette = {
-					-- override palette colors, take a peek at synthweave/palette.lua
-					-- bg0 = "#040404",
-				},
-			})
-			synthweave.load()
-		end,
+				cmp = true,
+				hop = true,
+				telescope = true,
+				harpoon = true,
+				-- neotree = { enabled = true, show_root = false, border = false },
+				mason = true,
+				notify = true,
+				gitsigns = true,
+				telekasten = true,
+			},
+		},
 	},
 	{
 		"folke/tokyonight.nvim",
@@ -145,6 +100,208 @@ return {
 				---@param highlights Highlights
 				---@param colors ColorScheme
 				on_highlights = function(highlights, colors) end,
+			})
+		end,
+	},
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			-- Enable transparent background
+			-- transparent = true,
+			transparent = false,
+
+			-- Enable italics comments
+			italic_comments = false,
+
+			-- Replace all fillchars with ' ' for the ultimate clean look
+			-- hide_fillchars = true,
+			hide_fillchars = false,
+
+			-- Modern borderless telescope theme
+			borderless_telescope = true,
+
+			-- Set terminal colors used in `:terminal`
+			terminal_colors = true,
+
+			theme = {
+				variant = "default",
+				highlights = {
+					Comment = { fg = "#696969", bg = "NONE", italic = true },
+					-- DiagnosticUnderlineError = { undercurl = true, sp = "#d11500" },
+					DiagnosticUnderlineError = { underdouble = true, sp = "#d11500" },
+
+					DiagnosticUnderlineWarn = { undercurl = false, sp = "#997b00" },
+					DiagnosticUnderlineInfo = { undercurl = false, sp = "#0057d1" },
+					DiagnosticUnderlineHint = { undercurl = false, sp = "#008c99" },
+				},
+			},
+		},
+	},
+	{
+		"samharju/serene.nvim",
+		lazy = false,
+		priority = 1000,
+		commit = "e44be3b1c8a824c4c33d851fc92b02c3e893ec66",
+	},
+	{
+		"slugbyte/lackluster.nvim",
+		lazy = false,
+		priority = 1000,
+		commit = "6d206a3af7dd2e8389eecebab858e7d97813fc0c",
+		config = function()
+			require("lackluster").setup({
+				disable_plugin = {
+					git_gutter = true,
+					git_signs = true,
+					cmp = false,
+				},
+				tweak_background = {
+					normal = "default", -- main background
+					-- normal = 'none',    -- transparent
+					-- normal = '#a1b2c3',    -- hexcode
+					-- normal = color.green,    -- lackluster color
+					telescope = "default", -- telescope
+
+					menu = "none", -- nvim_cmp, wildmenu ... (bad idea to transparent)
+					popup = "none", -- lazy, mason, whichkey ... (bad idea to transparent)
+				},
+			})
+		end,
+	},
+	{
+		"0xstepit/flow.nvim",
+		lazy = false,
+		priority = 1000,
+		commit = "c8f467af401de5356e2ca98388499489e8ad282f",
+		opts = {},
+		config = function()
+			require("flow").setup({
+				dark_theme = true, -- Set the theme with dark background.
+				high_contrast = true, -- Make the dark background darker or the light background lighter.
+				transparent = false, -- Set transparent background.
+				fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
+				-- mode = "bright", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
+				mode = "desaturate", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
+				aggressive_spell = false, -- Use colors for spell check.
+			})
+		end,
+	},
+	{
+		"diegoulloao/neofusion.nvim",
+		lazy = false,
+		priority = 1000,
+		commit = "f1776ed91ed7aa605d7827ee498b06bd8bbc37b5",
+		config = function()
+			require("neofusion").setup({
+				terminal_colors = true, -- add neovim terminal colors
+				undercurl = true,
+				underline = true,
+				bold = true,
+				italic = {
+					strings = true,
+					emphasis = true,
+					comments = true,
+					operators = false,
+					folds = true,
+				},
+				strikethrough = true,
+				invert_selection = false,
+				invert_signs = false,
+				invert_tabline = false,
+				invert_intend_guides = false,
+				inverse = true, -- invert background for search, diffs, statuslines and errors
+				palette_overrides = {
+					dark0 = "#000000",
+				},
+				overrides = {
+					DiagnosticUnderlineError = { underdouble = true, sp = "#d11500" },
+					DiagnosticUnderlineWarn = { undercurl = false, sp = "#997b00" },
+					DiagnosticUnderlineInfo = { undercurl = false, sp = "#0057d1" },
+					DiagnosticUnderlineHint = { undercurl = false, sp = "#008c99" },
+				},
+				dim_inactive = false,
+				transparent_mode = false,
+			})
+		end,
+	},
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("rose-pine").setup({
+				variant = "auto", -- auto, main, moon, or dawn
+				dark_variant = "main", -- main, moon, or dawn
+				dim_inactive_windows = false,
+				extend_background_behind_borders = true,
+
+				enable = {
+					terminal = true,
+					legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
+					migrations = false, -- Handle deprecated options automatically
+				},
+
+				styles = {
+					bold = true,
+					italic = false,
+					transparency = false,
+				},
+
+				groups = {
+					border = "muted",
+					link = "iris",
+					panel = "surface",
+
+					error = "love",
+					hint = "iris",
+					info = "foam",
+					note = "pine",
+					todo = "rose",
+					warn = "gold",
+
+					git_add = "foam",
+					git_change = "rose",
+					git_delete = "love",
+					git_dirty = "rose",
+					git_ignore = "muted",
+					git_merge = "iris",
+					git_rename = "pine",
+					git_stage = "iris",
+					git_text = "rose",
+					git_untracked = "subtle",
+
+					h1 = "iris",
+					h2 = "foam",
+					h3 = "rose",
+					h4 = "gold",
+					h5 = "pine",
+					h6 = "foam",
+				},
+
+				highlight_groups = {
+					-- Comment = { fg = "foam" },
+					-- VertSplit = { fg = "muted", bg = "muted" },
+					DiagnosticUnderlineError = { underdouble = true, sp = "#d11500" },
+
+					DiagnosticUnderlineWarn = { undercurl = false, sp = "#997b00" },
+					DiagnosticUnderlineInfo = { undercurl = false, sp = "#0057d1" },
+					DiagnosticUnderlineHint = { undercurl = false, sp = "#008c99" },
+				},
+
+				before_highlight = function(group, highlight, palette)
+					-- Disable all undercurls
+					-- if highlight.undercurl then
+					--     highlight.undercurl = false
+					-- end
+					--
+					-- Change palette colour
+					-- if highlight.fg == palette.pine then
+					--     highlight.fg = palette.foam
+					-- end
+				end,
 			})
 		end,
 	},

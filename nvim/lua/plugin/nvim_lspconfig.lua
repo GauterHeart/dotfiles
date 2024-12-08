@@ -100,40 +100,32 @@ return {
 			-- 	["textDocument/publishDiagnostics"] = function() end,
 			-- },
 			settings = {
+				pyright = {
+					disableOrganizeImports = true,
+				},
 				python = {
 					analysis = {
-						autoSearchPaths = true,
+						-- autoSearchPaths = true,
+
 						-- diagnosticMode = "workspace",
-						diagnosticMode = "openFilesOnly",
-						useLibraryCodeForTypes = true,
-						typeCheckingMode = "on",
+
+						-- diagnosticMode = "openFilesOnly",
+						-- useLibraryCodeForTypes = true,
+						-- typeCheckingMode = "on",
+
 						-- typeCheckingMode = "off",
 						-- reportUnusedVariable = "off",
+
+						ignore = { "*" },
 					},
 				},
 			},
 			capabilities = lsp_capabilities,
 		})
-		-- nvim_lsp.pylyzer.setup{}
-
-		nvim_lsp.tsserver.setup({
-			-- on_attach = on_attach,
-			filetypes = {
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-			},
-			handlers = handlers,
-			cmd = { "typescript-language-server", "--stdio" },
-			capabilities = vim.lsp.protocol.make_client_capabilities(),
-			on_attach = function(client, bufnr)
-				client.server_capabilities.semanticTokensProvider = nil
-			end,
-		})
-
+		-- nvim_lsp.pylyzer.setup({
+		-- 	handlers = handlers,
+		-- 	single_file_support=true,
+		-- })
 		nvim_lsp.gopls.setup({
 			handlers = handlers,
 		})
@@ -157,8 +149,26 @@ return {
 				client.server_capabilities.semanticTokensProvider = nil
 			end,
 		})
+		nvim_lsp.rust_analyzer.setup({
+			settings = {
+				["rust-analyzer"] = {
+					diagnostics = {
+						enable = false,
+					},
+				},
+			},
+		})
 
 		-- Utils LSP
+		-- nvim_lsp.harper_ls.setup({
+		-- 	settings = {
+		-- 		["harper-ls"] = {
+		-- 			userDictPath = "~/dict.txt",
+		-- 		},
+		-- 	},
+		-- })
+		-- nvim_lsp.pbls.setup({})
+
 		nvim_lsp.bashls.setup({})
 		nvim_lsp.jsonls.setup({})
 		nvim_lsp.marksman.setup({
@@ -168,6 +178,6 @@ return {
 			root_dir = util.root_pattern(".git", ".marksman.toml"),
 		})
 
-		nvim_lsp.bufls.setup({})
+		-- nvim_lsp.bufls.setup({})
 	end,
 }
